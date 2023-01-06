@@ -10,13 +10,17 @@
         "48": "images/icon-48.png",
         "128": "images/icon-128.png"
     },
-    "action":{
+    "chrome_url_overrides": {
+        "newtab": "popup.html"
+    },
+    "action": {
         "default_popup": "popup.html",
         "default_title": "History Analysis"
     },
     "background": {
         "service_worker": "background.js"
     },
+    "options_page": "options.html",
     "permissions": [
         "history",
         "storage",
