@@ -18,6 +18,8 @@
         "service_worker": "background.js"
     },
     "permissions": [
-        "history"
+        "history",
+        "storage",
+        "unlimitedStorage"
     ]
 }
