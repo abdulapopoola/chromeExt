@@ -6,4 +6,6 @@
 // extract out the time ranges for each
 
 // CONTINUE
-// Get all history and dump on options page
+// Extract each page domain
+// Coalesce into a daily view for top pages?
+// Brute force first - just calculate everything in one go - on demand; then optimize afterwards
