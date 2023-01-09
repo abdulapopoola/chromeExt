@@ -1,11 +1,12 @@
-const kMillisecondsPerWeek = 1000 * 60 * 60 * 24 * 365;
-const kOneWeekAgo = (new Date).getTime() - kMillisecondsPerWeek;
+const millisecondsPerWeek = 1000 * 60 * 60 * 24 * 7;
+const OneWeekAgo = (new Date).getTime() - millisecondsPerWeek;
+const maxResults = 100000;
 
 chrome.history.search(
     {
         text: '',
-        startTime: kOneWeekAgo,
-        maxResults: 10000000
+        startTime: OneWeekAgo,
+        maxResults: maxResults,
     }, function (data) {
         // data.forEach(function(page) {
         //     console.log(page.url);
