@@ -6,7 +6,7 @@
 // extract out the time ranges for each
 
 // CONTINUE
-// Build a table showing each top site and a count - DOM manipulator
+// Consider using wordwrap for very long entries
 // Extract each page domain
 // Coalesce into a daily view for top pages?
 // Brute force first - just calculate everything in one go - on demand; then optimize afterwards
