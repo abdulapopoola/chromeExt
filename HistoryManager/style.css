@@ -1,0 +1,10 @@
+table {
+    width: 100%;
+}
+
+td {
+    white-space: normal;
+    word-break: break-word;
+    max-width: 300px;
+    min-width: 150px;
+}
