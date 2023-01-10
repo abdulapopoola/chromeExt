@@ -6,7 +6,7 @@
 // extract out the time ranges for each
 
 // CONTINUE
-// Consider using wordwrap for very long entries
-// Extract each page domain
+// Sort by top pages first
 // Coalesce into a daily view for top pages?
 // Brute force first - just calculate everything in one go - on demand; then optimize afterwards
+// style the table page
