@@ -2,6 +2,11 @@ table {
     width: 100%;
 }
 
+th {
+    text-align: left;
+    text-transform: capitalize;
+}
+
 td {
     white-space: normal;
     word-break: break-word;

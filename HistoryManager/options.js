@@ -1,7 +1,7 @@
-const millisecondsPerWeek = 1000 * 60 * 60 * 24 * 7;
+const millisecondsPerWeek = 1000 * 60 * 60 * 24 * 1;
 const OneWeekAgo = (new Date).getTime() - millisecondsPerWeek;
 const maxResults = 100000;
-const HEADERS = ['Hostname', 'Frequency', 'VisitCount'];
+const HEADERS = ['hostname', 'frequency', 'visitCount'];
 
 function generateTableHead(table, headers) {
     let tHead = table.createTHead();
@@ -14,12 +14,11 @@ function generateTableHead(table, headers) {
     }
 }
 
-function generateTableBody(table, data) {
+function generateTableBody(table, historyItems) {
     let tBody = table.createTBody();
-    let keys = Object.keys(data);
-    for (let key of keys) {
+    historyItems = sort(historyItems, 'frequency');
+    for (let entry of historyItems) {
         let row = tBody.insertRow();
-        let entry = data[key];
         for (let value of Object.values(entry)) {
             if(Array.isArray(value)) {
                 continue; //todo; make this more elegant
@@ -29,6 +28,12 @@ function generateTableBody(table, data) {
             cell.appendChild(text);
         }
     }
+}
+
+function sort(arr, field) {
+    return arr.sort((a,b) => {
+        return b[field] - a[field];
+    });
 }
 
 /*
@@ -50,20 +55,20 @@ function transformHistoryItems(historyItems) {
         let hostname = url.hostname;
         let entry = transformed[hostname];
         if (entry) {
-            entry.count++;
+            entry.frequency++;
             entry.visitCount += item.visitCount;
             entry.items.push(item);
         } else {
             transformed[hostname] = {
                 hostname,
-                count: 1,
+                frequency: 1,
                 visitCount: item.visitCount,
                 items: [item]
             }
         }
     }
 
-    return transformed;
+    return Object.values(transformed);
 }
 
 function getHistory() {
@@ -73,11 +78,10 @@ function getHistory() {
             startTime: OneWeekAgo,
             maxResults: maxResults,
         }, function (data) {
-            data = transformHistoryItems(data);
-            let table = document.querySelector("table");
-            // let headerValues = Object.keys(data[0]);
+            let transformed = transformHistoryItems(data);
+            let table = document.querySelector("table");            
             generateTableHead(table, HEADERS);
-            generateTableBody(table, data);
+            generateTableBody(table, transformed);
         });
 }
 

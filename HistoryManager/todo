@@ -6,7 +6,12 @@
 // extract out the time ranges for each
 
 // CONTINUE
-// Sort by top pages first
+// Add click handlers to sort by clicked header; allow for sorting ascending or descending
+// Add configurable timelines: day, hour, month, year?
+// Allow diving into one header to dive into analysis of that hostname
 // Coalesce into a daily view for top pages?
 // Brute force first - just calculate everything in one go - on demand; then optimize afterwards
 // style the table page
+// consider using a framework with sortable fields? Or maybe build it myself to keep things lightweight
+// consider creating a one-hit wonder category to highlight mindless scrolling and time sinks on the internet
+// consider using computed properties for mapping constants to the fields: https://stackoverflow.com/questions/4117214/using-constants-as-indices-for-javascript-associative-arrays
