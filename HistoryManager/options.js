@@ -16,11 +16,11 @@ function generateTableHead(table, headers) {
 
 function generateTableBody(table, historyItems) {
     let tBody = table.createTBody();
-    historyItems = sort(historyItems, 'frequency');
+    //historyItems = sort(historyItems, 'frequency');
     for (let entry of historyItems) {
         let row = tBody.insertRow();
         for (let value of Object.values(entry)) {
-            if(Array.isArray(value)) {
+            if (Array.isArray(value)) {
                 continue; //todo; make this more elegant
             }
             let text = document.createTextNode(value);
@@ -31,7 +31,7 @@ function generateTableBody(table, historyItems) {
 }
 
 function sort(arr, field) {
-    return arr.sort((a,b) => {
+    return arr.sort((a, b) => {
         return b[field] - a[field];
     });
 }
@@ -79,10 +79,26 @@ function getHistory() {
             maxResults: maxResults,
         }, function (data) {
             let transformed = transformHistoryItems(data);
-            let table = document.querySelector("table");            
+            let table = document.querySelector("table");
             generateTableHead(table, HEADERS);
             generateTableBody(table, transformed);
+            addSortCapability(transformed);
         });
+}
+
+function addSortCapability(historyItems) {
+    // get all the theads
+    // match the data to them
+    // have it sorted
+    // preserve toggle effect
+
+    let headerCells = document.getElementsByTagName('th');
+    for (var i = 0; i < headerCells.length; i++) {
+        let headerCell = headerCells[i];
+        headerCell.onclick = () => {
+            sort(historyItems, headerCell.textContent);
+        };
+    }
 }
 
 getHistory();
