@@ -79,26 +79,22 @@ function getHistory() {
             maxResults: maxResults,
         }, function (data) {
             let transformed = transformHistoryItems(data);
-            let table = document.querySelector("table");
-            generateTableHead(table, HEADERS);
-            generateTableBody(table, transformed);
-            addSortCapability(transformed);
+            debugger;
+            var table = new Tabulator("#example-table", {
+                layout: "fitColumns",
+                data: transformed,
+                pagination: "local",
+                paginationSize: 20,
+                paginationSizeSelector: [10, 20, 50],
+                movableColumns: true,
+                paginationCounter: "rows",
+                columns: [
+                    { title: "Name", field: "hostname", width: 150 },
+                    { title: "Frequency", field: "frequency", hozAlign: "left" },
+                    { title: "Count", field: "visitCount" },
+                ]
+            });
         });
-}
-
-function addSortCapability(historyItems) {
-    // get all the theads
-    // match the data to them
-    // have it sorted
-    // preserve toggle effect
-
-    let headerCells = document.getElementsByTagName('th');
-    for (var i = 0; i < headerCells.length; i++) {
-        let headerCell = headerCells[i];
-        headerCell.onclick = () => {
-            sort(historyItems, headerCell.textContent);
-        };
-    }
 }
 
 getHistory();

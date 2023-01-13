@@ -10,6 +10,7 @@
 // Add configurable timelines: day, hour, month, year?
 // Allow drill
 // Allow categories
+// figure out a way to structure the folders and files better
 // Allow diving into one header to dive into analysis of that hostname
 // Coalesce into a daily view for top pages?
 // style the table page
