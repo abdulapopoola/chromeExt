@@ -3,39 +3,6 @@ const OneWeekAgo = (new Date).getTime() - millisecondsPerWeek;
 const maxResults = 100000;
 const HEADERS = ['hostname', 'frequency', 'visitCount'];
 
-function generateTableHead(table, headers) {
-    let tHead = table.createTHead();
-    let row = tHead.insertRow();
-    for (let header of headers) {
-        let text = document.createTextNode(header);
-        let th = document.createElement("th");
-        th.appendChild(text);
-        row.appendChild(th);
-    }
-}
-
-function generateTableBody(table, historyItems) {
-    let tBody = table.createTBody();
-    //historyItems = sort(historyItems, 'frequency');
-    for (let entry of historyItems) {
-        let row = tBody.insertRow();
-        for (let value of Object.values(entry)) {
-            if (Array.isArray(value)) {
-                continue; //todo; make this more elegant
-            }
-            let text = document.createTextNode(value);
-            let cell = row.insertCell();
-            cell.appendChild(text);
-        }
-    }
-}
-
-function sort(arr, field) {
-    return arr.sort((a, b) => {
-        return b[field] - a[field];
-    });
-}
-
 /*
     key: value
     baseURL: [{
@@ -79,8 +46,7 @@ function getHistory() {
             maxResults: maxResults,
         }, function (data) {
             let transformed = transformHistoryItems(data);
-            debugger;
-            var table = new Tabulator("#example-table", {
+            new Tabulator("#example-table", {
                 layout: "fitColumns",
                 data: transformed,
                 pagination: "local",
