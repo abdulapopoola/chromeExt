@@ -7,6 +7,7 @@
 
 // CONTINUE
 // Add configurable timelines: day, hour, month, year?
+// Use $$ selector with id and data fields to get values; pass to history function and reset table
 // Allow drill
 // Allow categories
 // figure out a way to structure the folders and files better

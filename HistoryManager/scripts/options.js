@@ -64,3 +64,7 @@ function getHistory(startTime) {
 }
 
 getHistory();
+
+$('removeAll').onclick = function () {
+    console.log('CLICKED');
+}
