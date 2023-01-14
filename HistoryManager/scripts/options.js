@@ -38,15 +38,15 @@ function transformHistoryItems(historyItems) {
     return Object.values(transformed);
 }
 
-function getHistory() {
+function getHistory(startTime) {
     chrome.history.search(
         {
             text: '',
-            startTime: OneWeekAgo,
+            startTime: startTime || OneWeekAgo,
             maxResults: maxResults,
         }, function (data) {
             let transformed = transformHistoryItems(data);
-            new Tabulator("#example-table", {
+            new Tabulator("#historyTable", {
                 layout: "fitColumns",
                 data: transformed,
                 pagination: "local",
@@ -55,8 +55,8 @@ function getHistory() {
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
-                    { title: "Name", field: "hostname", width: 150 },
-                    { title: "Frequency", field: "frequency", hozAlign: "left" },
+                    { title: "Name", field: "hostname" },
+                    { title: "Frequency", field: "frequency" },
                     { title: "Count", field: "visitCount" },
                 ]
             });

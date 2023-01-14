@@ -18,15 +18,12 @@
         "default_title": "History Analysis"
     },
     "background": {
-        "service_worker": "background.js"
+        "service_worker": "./scripts/background.js"
     },
     "options_page": "options.html",
     "permissions": [
         "history",
         "storage",
         "unlimitedStorage"
-    ],
-    "content_security_policy": {
-        "extension_pages": "script-src 'self'; object-src 'self'; script-src-elem 'self' 'unsafe-inline' https://unpkg.com/;"
-    }
+    ]
 }
