@@ -11,10 +11,12 @@
 
 <body>
     <head>History Analysis Options</head>
-    <button>One Day</button>
-    <button>One Week</button>
-    <button>One Year</button>
-    <button>All</button>
+    <div id="buttons">
+        <button data-days="1">One Day</button>
+        <button data-days="7">One Week</button>
+        <button data-days="365">One Year</button>
+        <button data-days="1000000000">All</button>
+    </div>
     <div id="historyTable"></div>
     <link href="./styles/tabulator.min.css" rel="stylesheet">
 </body>

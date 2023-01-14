@@ -6,8 +6,9 @@
 // extract out the time ranges for each
 
 // CONTINUE
-// Add configurable timelines: day, hour, month, year?
-// Use $$ selector with id and data fields to get values; pass to history function and reset table
+// figure out coding style for constants
+// allow table to be implicitly sorted on load
+// Show reloading and animations when the config buttons are clicked
 // Allow drill
 // Allow categories
 // figure out a way to structure the folders and files better

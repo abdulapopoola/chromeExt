@@ -1,8 +1,7 @@
-const millisecondsPerWeek = 1000 * 60 * 60 * 24 * 1;
-const OneWeekAgo = (new Date).getTime() - millisecondsPerWeek;
+const millisecondsPerDay = 1000 * 60 * 60 * 24 * 1;
 const maxResults = 100000;
 const HEADERS = ['hostname', 'frequency', 'visitCount'];
-
+const $ = document.getElementById.bind(document);
 /*
     key: value
     baseURL: [{
@@ -42,7 +41,7 @@ function getHistory(startTime) {
     chrome.history.search(
         {
             text: '',
-            startTime: startTime || OneWeekAgo,
+            startTime: startTime,
             maxResults: maxResults,
         }, function (data) {
             let transformed = transformHistoryItems(data);
@@ -63,8 +62,23 @@ function getHistory(startTime) {
         });
 }
 
-getHistory();
+let getLookBackStartTime = function(days) {
+    if(!Number.isFinite(days)) {
+        days = 1;
+    }
 
-$('removeAll').onclick = function () {
-    console.log('CLICKED');
+    const elapsedMilliseconds = millisecondsPerDay * days;
+    const startTime = (new Date).getTime() - elapsedMilliseconds;
+    return startTime;
 }
+
+let buttons = $('buttons').getElementsByTagName('button');
+for(const button of buttons) {
+    button.onclick = () => {
+        let days = parseInt(button.dataset.days, 10);
+        let startTime = getLookBackStartTime(days);
+        getHistory(startTime);
+    };
+}
+
+getHistory();
