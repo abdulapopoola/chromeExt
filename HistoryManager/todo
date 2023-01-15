@@ -1,4 +1,5 @@
 Drill feature
+0. Figure out how to extract data from selected row
 1. On row click, pass all items to new table
 2. Show the newly generated table below the page
 3. Hide the top-level view
@@ -24,3 +25,4 @@ Miscellaneous
 4. figure out how to show a page with details and settings
 5. how do extensions get a settings page
 6. extract out the time ranges for each
+7. Consider adopting classes instead of standalone functions

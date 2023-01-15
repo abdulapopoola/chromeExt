@@ -37,6 +37,38 @@ function transformHistoryItems(historyItems) {
     return Object.values(transformed);
 }
 
+function getLookBackStartTime(days) {
+    if (!Number.isFinite(days)) {
+        days = 1;
+    }
+
+    const elapsedMilliseconds = MILLISECONDS_PER_DAY * days;
+    const startTime = (new Date).getTime() - elapsedMilliseconds;
+    return startTime;
+}
+
+function drill(historyItem) {
+    new Tabulator("#drillTable", {
+        layout: "fitColumns",
+        data: historyItem,
+        pagination: "local",
+        paginationSize: 20,
+        paginationSizeSelector: [10, 20, 50],
+        movableColumns: true,
+        paginationCounter: "rows",
+        columns: [
+            { title: "Name", field: "hostname" },
+            { title: "Frequency", field: "frequency", sorter: "number" },
+            { title: "Visit Count", field: "visitCount", sorter: "number" },
+        ],
+        initialSort: [
+            { column: "visitCount", dir: "desc" },
+            { column: "frequency", dir: "desc" },
+        ],
+        sortOrderReverse: true,
+    });
+}
+
 function getHistory(startTime) {
     chrome.history.search(
         {
@@ -45,7 +77,7 @@ function getHistory(startTime) {
             maxResults: MAX_RESULTS,
         }, function (data) {
             let transformed = transformHistoryItems(data);
-            new Tabulator("#historyTable", {
+            let table = new Tabulator("#historyTable", {
                 layout: "fitColumns",
                 data: transformed,
                 pagination: "local",
@@ -64,17 +96,13 @@ function getHistory(startTime) {
                 ],
                 sortOrderReverse: true,
             });
+
+            table.on("rowClick", function(e, row){
+                row.toggleSelect();
+                let data = row._row.data;
+                drill(data);
+            });
         });
-}
-
-let getLookBackStartTime = function (days) {
-    if (!Number.isFinite(days)) {
-        days = 1;
-    }
-
-    const elapsedMilliseconds = MILLISECONDS_PER_DAY * days;
-    const startTime = (new Date).getTime() - elapsedMilliseconds;
-    return startTime;
 }
 
 let buttons = $('buttons').getElementsByTagName('button');
