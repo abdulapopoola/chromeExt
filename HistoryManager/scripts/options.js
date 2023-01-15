@@ -55,15 +55,20 @@ function getHistory(startTime) {
                 paginationCounter: "rows",
                 columns: [
                     { title: "Name", field: "hostname" },
-                    { title: "Frequency", field: "frequency" },
-                    { title: "Count", field: "visitCount" },
-                ]
+                    { title: "Frequency", field: "frequency", sorter: "number" },
+                    { title: "Visit Count", field: "visitCount", sorter: "number" },
+                ],
+                initialSort: [
+                    { column: "visitCount", dir: "desc" },
+                    { column: "frequency", dir: "desc" },
+                ],
+                sortOrderReverse: true,
             });
         });
 }
 
-let getLookBackStartTime = function(days) {
-    if(!Number.isFinite(days)) {
+let getLookBackStartTime = function (days) {
+    if (!Number.isFinite(days)) {
         days = 1;
     }
 
@@ -73,7 +78,7 @@ let getLookBackStartTime = function(days) {
 }
 
 let buttons = $('buttons').getElementsByTagName('button');
-for(const button of buttons) {
+for (const button of buttons) {
     button.onclick = () => {
         let days = parseInt(button.dataset.days, 10);
         let startTime = getLookBackStartTime(days);
