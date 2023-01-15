@@ -1,5 +1,5 @@
-const millisecondsPerDay = 1000 * 60 * 60 * 24 * 1;
-const maxResults = 100000;
+const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24 * 1;
+const MAX_RESULTS = 100000;
 const HEADERS = ['hostname', 'frequency', 'visitCount'];
 const $ = document.getElementById.bind(document);
 /*
@@ -42,7 +42,7 @@ function getHistory(startTime) {
         {
             text: '',
             startTime: startTime,
-            maxResults: maxResults,
+            maxResults: MAX_RESULTS,
         }, function (data) {
             let transformed = transformHistoryItems(data);
             new Tabulator("#historyTable", {
@@ -67,7 +67,7 @@ let getLookBackStartTime = function(days) {
         days = 1;
     }
 
-    const elapsedMilliseconds = millisecondsPerDay * days;
+    const elapsedMilliseconds = MILLISECONDS_PER_DAY * days;
     const startTime = (new Date).getTime() - elapsedMilliseconds;
     return startTime;
 }
