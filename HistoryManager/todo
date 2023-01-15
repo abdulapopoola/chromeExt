@@ -1,17 +1,26 @@
-// Periodically scan the history? Every hour maybe or every day?
-// Process into sources and destinations
-// Process time spent on each
-// figure out how to show a page with details and settings
-// how do extensions get a settings page
-// extract out the time ranges for each
+Drill feature
+1. On row click, pass all items to new table
+2. Show the newly generated table below the page
+3. Hide the top-level view
+4. Add a back button to toggle
 
-// CONTINUE
-// Show reloading and animations when the config buttons are clicked
-// Allow drill
-// Allow categories
-// figure out a way to structure the folders and files better
-// Allow diving into one header to dive into analysis of that hostname
-// figure out how to extract time spent on each visit to a page
-// Coalesce into a daily view for top pages?
-// style the table page
-// consider creating a one-hit wonder category to highlight mindless scrolling and time sinks on the internet
+Coding
+1. Allow drill
+2. Allow diving into one header to dive into analysis of that hostname
+3. Allow categories
+4. figure out how to extract time spent on each visit to a page
+5. Coalesce into a daily view for top pages?
+6. consider creating a one-hit wonder category to highlight mindless scrolling and time sinks on the internet
+
+
+Styling
+1. Style the table page
+2. Show reloading and animations when the config buttons are clicked
+
+Miscellaneous
+1. Periodically scan the history? Every hour maybe or every day?
+2. Process into sources and destinations
+3. Process time spent on each
+4. figure out how to show a page with details and settings
+5. how do extensions get a settings page
+6. extract out the time ranges for each
