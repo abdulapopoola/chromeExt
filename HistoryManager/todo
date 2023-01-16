@@ -1,7 +1,5 @@
 Drill feature
-0. Figure out how to extract data from selected row
-1. On row click, pass all items to new table
-2. Show the newly generated table below the page
+2. Show the newly generated table below the page; select the right fields
 3. Hide the top-level view
 4. Add a back button to toggle
 

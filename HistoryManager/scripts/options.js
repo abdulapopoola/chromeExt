@@ -50,21 +50,13 @@ function getLookBackStartTime(days) {
 function drill(historyItem) {
     new Tabulator("#drillTable", {
         layout: "fitColumns",
-        data: historyItem,
+        data: historyItem.items,
         pagination: "local",
         paginationSize: 20,
         paginationSizeSelector: [10, 20, 50],
         movableColumns: true,
         paginationCounter: "rows",
-        columns: [
-            { title: "Name", field: "hostname" },
-            { title: "Frequency", field: "frequency", sorter: "number" },
-            { title: "Visit Count", field: "visitCount", sorter: "number" },
-        ],
-        initialSort: [
-            { column: "visitCount", dir: "desc" },
-            { column: "frequency", dir: "desc" },
-        ],
+        autoColumns:true,
         sortOrderReverse: true,
     });
 }
@@ -79,6 +71,7 @@ function getHistory(startTime) {
             let transformed = transformHistoryItems(data);
             let table = new Tabulator("#historyTable", {
                 layout: "fitColumns",
+                selectable: 1,
                 data: transformed,
                 pagination: "local",
                 paginationSize: 20,
@@ -96,10 +89,9 @@ function getHistory(startTime) {
                 ],
                 sortOrderReverse: true,
             });
-
+            
             table.on("rowClick", function(e, row){
-                row.toggleSelect();
-                let data = row._row.data;
+                let data = row.getData();
                 drill(data);
             });
         });
