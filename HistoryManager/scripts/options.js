@@ -47,16 +47,33 @@ function getLookBackStartTime(days) {
     return startTime;
 }
 
-function drill(historyItem) {
+function drill(data, historyItems) {
     new Tabulator("#drillTable", {
         layout: "fitColumns",
-        data: historyItem.items,
+        data: historyItems,
         pagination: "local",
         paginationSize: 20,
         paginationSizeSelector: [10, 20, 50],
         movableColumns: true,
         paginationCounter: "rows",
-        autoColumns:true,
+        columns: [
+            { title: "Visit Count", field: "visitCount", sorter: "number" },
+            { title: "Title", field: "title" },
+            {
+                title: "Last Visited", field: "lastVisitTime", formatter: "datetime", formatterParams: {
+                    inputFormat: "unix",
+                    outputFormat: "dd/MM/yy",
+                    invalidPlaceholder: "(invalid date)",
+                    timezone: "America/Los_Angeles",
+                }
+            },
+            { title: "URL", field: "url" },
+            { title: "URL Typed Count", field: "typedCount" },
+        ],
+        initialSort: [
+            { column: "visitCount", dir: "desc" },
+            { column: "title", dir: "desc" },
+        ],
         sortOrderReverse: true,
     });
 }
@@ -89,10 +106,10 @@ function getHistory(startTime) {
                 ],
                 sortOrderReverse: true,
             });
-            
-            table.on("rowClick", function(e, row){
+
+            table.on("rowClick", function (e, row) {
                 let data = row.getData();
-                drill(data);
+                drill(data, data.items);
             });
         });
 }
