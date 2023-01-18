@@ -48,10 +48,10 @@ function getLookBackStartTime(days) {
 }
 
 function drill(data, historyItems) {
-    new Tabulator("#drillTable", {
-        placeholder:"No Data Available",
+    var t = new Tabulator("#drillTable", {
+        placeholder: "No Data Available",
         layout: "fitDataStretch",
-        responsiveLayout:"hide",
+        responsiveLayout: "collapse",
         data: historyItems,
         pagination: "local",
         paginationSize: 20,
@@ -78,8 +78,10 @@ function drill(data, historyItems) {
                     timezone: "America/Los_Angeles",
                 }
             },
-            { title: "URL", field: "url" },
-            { title: "URL Typed Count", field: "typedCount" },
+            {
+                title: "URL", field: "url", sorter: "string"
+            },
+            { title: "URL Typed Count", field: "typedCount", sorter: "number" },
         ],
         initialSort: [
             { column: "visitCount", dir: "desc" },
@@ -98,8 +100,9 @@ function getHistory(startTime) {
         }, function (data) {
             let transformed = transformHistoryItems(data);
             let table = new Tabulator("#historyTable", {
-                placeholder:"No Data Available",
+                placeholder: "No Data Available",
                 layout: "fitDataStretch",
+                responsiveLayout: "collapse",
                 selectable: 1,
                 data: transformed,
                 pagination: "local",

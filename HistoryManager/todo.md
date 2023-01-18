@@ -1,5 +1,4 @@
 Drill feature
-0. Fit content to table
 1. Hide the top-level view
 1. Add a back button to toggle
 
