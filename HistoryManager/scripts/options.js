@@ -79,9 +79,9 @@ function drill(data, historyItems) {
                 }
             },
             {
-                title: "URL", field: "url", sorter: "string"
+                title: "URL", field: "url", formatter: "link"
             },
-            { title: "URL Typed Count", field: "typedCount", sorter: "number" },
+            { title: "Times Typed", field: "typedCount", sorter: "number" },
         ],
         initialSort: [
             { column: "visitCount", dir: "desc" },
