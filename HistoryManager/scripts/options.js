@@ -60,9 +60,18 @@ function drill(data, historyItems) {
             { title: "Visit Count", field: "visitCount", sorter: "number" },
             { title: "Title", field: "title" },
             {
-                title: "Last Visited", field: "lastVisitTime", formatter: "datetime", formatterParams: {
-                    inputFormat: "unix",
-                    outputFormat: "dd/MM/yy",
+                title: "Last Visited",
+                field: "lastVisitTime",
+                formatter: function (cell, formatterParams, onRendered) {
+                    try {
+                        let dt = luxon.DateTime.fromMillis(cell.getValue());
+                        return dt.toFormat(formatterParams.outputFormat);
+                    } catch (error) {
+                        return formatterParams.invalidPlaceholder;
+                    }
+                },
+                formatterParams: {
+                    outputFormat: "dd/MM/yy HH:mm:ss",
                     invalidPlaceholder: "(invalid date)",
                     timezone: "America/Los_Angeles",
                 }

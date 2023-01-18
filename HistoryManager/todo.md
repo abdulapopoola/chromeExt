@@ -1,6 +1,5 @@
 Drill feature
-2. Show the newly generated table below the page; select the right fields
-1. use a custom formatter; see: https://stackoverflow.com/questions/72899053/tabulator-js-5-2-datetime-formatter-with-luxon-js-how-to-configure-inputformat
+0. Fit content to table
 1. Hide the top-level view
 1. Add a back button to toggle
 
