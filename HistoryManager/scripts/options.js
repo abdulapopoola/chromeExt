@@ -49,7 +49,9 @@ function getLookBackStartTime(days) {
 
 function drill(data, historyItems) {
     new Tabulator("#drillTable", {
-        layout: "fitColumns",
+        placeholder:"No Data Available",
+        layout: "fitDataStretch",
+        responsiveLayout:"hide",
         data: historyItems,
         pagination: "local",
         paginationSize: 20,
@@ -96,7 +98,8 @@ function getHistory(startTime) {
         }, function (data) {
             let transformed = transformHistoryItems(data);
             let table = new Tabulator("#historyTable", {
-                layout: "fitColumns",
+                placeholder:"No Data Available",
+                layout: "fitDataStretch",
                 selectable: 1,
                 data: transformed,
                 pagination: "local",
