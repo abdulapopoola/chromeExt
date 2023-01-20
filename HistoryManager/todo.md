@@ -1,5 +1,4 @@
 Drill feature
-0. Consider using an ellipsis formatter to achieve overflow effect: see: https://stackoverflow.com/questions/58762184/using-custom-ellipsis-for-truncated-text-in-tabulator
 1. Hide the top-level view
 1. Add a back button to toggle
 
