@@ -59,8 +59,10 @@ function drill(data, historyItems) {
         movableColumns: true,
         paginationCounter: "rows",
         columns: [
-            { title: "Visit Count", field: "visitCount", sorter: "number" },
             { title: "Title", field: "title" },
+            { title: "URL", field: "url", formatter: "link" },
+            { title: "Visit Count", field: "visitCount", sorter: "number" },
+            { title: "Times Typed", field: "typedCount", sorter: "number" },
             {
                 title: "Last Visited",
                 field: "lastVisitTime",
@@ -78,10 +80,6 @@ function drill(data, historyItems) {
                     timezone: "America/Los_Angeles",
                 }
             },
-            {
-                title: "URL", field: "url", formatter: "link"
-            },
-            { title: "Times Typed", field: "typedCount", sorter: "number" },
         ],
         initialSort: [
             { column: "visitCount", dir: "desc" },
