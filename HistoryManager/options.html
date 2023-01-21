@@ -11,18 +11,20 @@
 </head>
 
 <body>
-    <header>
-        <h1>Modern Frontend Monitoring and Product Analytics</h1>
-    </header>
     <div class="header">
-        <h1>History Analysis Options</h1>
+        <h1>Time Tracker</h1>
         <p>Track your browsing habits (especially the mindless clicking!); you'd be surprised by the one-hit wonders!!
         </p>
         <div id="buttons">
-            <button data-days="1">One Day</button>
+            <button class="button-1" role="button" data-days="1">One Day</button>
+            <button class="button-1" role="button" data-days="7">One Week</button>
+            <button class="button-1" role="button" data-days="365">One Year</button>
+            <button class="button-1" role="button" data-days="10000000000">All time</button>
+            
+            <!-- <button data-days="1">One Day</button>
             <button data-days="7">One Week</button>
             <button data-days="365">One Year</button>
-            <button data-days="1000000000">All</button>
+            <button data-days="1000000000">All</button> -->
         </div>
     </div>
     <div id="historyTable"></div>
