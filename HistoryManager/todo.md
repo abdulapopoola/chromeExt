@@ -1,8 +1,8 @@
 Styling
-1. Style the header section: see https://blog.logrocket.com/five-cool-css-header-styles-with-cross-browser-compatibility/ and https://blog.avada.io/css/headers-footers 
 1. Style the table page
 2. Show reloading and animations when the config buttons are clicked
 1. Style the drill table to show analysis
+1. Make selected button's style sticky
 
 Drill feature
 1. Hide the top-level view
