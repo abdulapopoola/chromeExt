@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "History Override",
     "description": "Overrides the History Page",
-    "version": "1.0",
+    "version": "0.0.0.1",
     "chrome_url_overrides": {
         "history": "history.html"
     },
