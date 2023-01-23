@@ -111,7 +111,6 @@ function getHistory(startTime) {
                 paginationCounter: "rows",
                 columns: [
                     { title: "Name", field: "hostname", headerTooltip:"Domain name" },
-                    { title: "Frequency", field: "frequency", sorter: "number", headerTooltip:true },
                     { title: "Visit Count", field: "visitCount", sorter: "number", headerTooltip:"visit times count" },
                 ],
                 initialSort: [
