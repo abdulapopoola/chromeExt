@@ -59,10 +59,10 @@ function drill(data, historyItems) {
         movableColumns: true,
         paginationCounter: "rows",
         columns: [
-            { title: "Title", field: "title" },
-            { title: "URL", field: "url", formatter: "link" },
-            { title: "Visit Count", field: "visitCount", sorter: "number" },
-            { title: "Times Typed", field: "typedCount", sorter: "number" },
+            { title: "Title", field: "title", headerTooltip:true },
+            { title: "URL", field: "url", formatter: "link", headerTooltip:"full address of visited link" },
+            { title: "Visit Count", field: "visitCount", sorter: "number", headerTooltip:true },
+            { title: "Times Typed", field: "typedCount", sorter: "number", headerTooltip:"Times URL was typed into the browser; if zero, this is a click"  },
             {
                 title: "Last Visited",
                 field: "lastVisitTime",
@@ -78,7 +78,8 @@ function drill(data, historyItems) {
                     outputFormat: "dd/MM/yy HH:mm:ss",
                     invalidPlaceholder: "(invalid date)",
                     timezone: "America/Los_Angeles",
-                }
+                },
+                headerTooltip: true
             },
         ],
         initialSort: [
@@ -109,9 +110,9 @@ function getHistory(startTime) {
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
-                    { title: "Name", field: "hostname" },
-                    { title: "Frequency", field: "frequency", sorter: "number" },
-                    { title: "Visit Count", field: "visitCount", sorter: "number" },
+                    { title: "Name", field: "hostname", headerTooltip:"Domain name" },
+                    { title: "Frequency", field: "frequency", sorter: "number", headerTooltip:true },
+                    { title: "Visit Count", field: "visitCount", sorter: "number", headerTooltip:"visit times count" },
                 ],
                 initialSort: [
                     { column: "visitCount", dir: "desc" },
