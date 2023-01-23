@@ -23,12 +23,14 @@ function transformHistoryItems(historyItems) {
         if (entry) {
             entry.frequency++;
             entry.visitCount += item.visitCount;
+            entry.typedCount += item.typedCount;
             entry.items.push(item);
         } else {
             transformed[hostname] = {
                 hostname,
                 frequency: 1,
                 visitCount: item.visitCount,
+                typedCount: item.typedCount,
                 items: [item]
             }
         }
@@ -60,9 +62,9 @@ function drill(data, historyItems) {
         paginationCounter: "rows",
         columns: [
             { title: "Title", field: "title", headerTooltip:true },
-            { title: "URL", field: "url", formatter: "link", headerTooltip:"full address of visited link" },
-            { title: "Visit Count", field: "visitCount", sorter: "number", headerTooltip:true },
-            { title: "Times Typed", field: "typedCount", sorter: "number", headerTooltip:"Times URL was typed into the browser; if zero, this is a click"  },
+            { title: "URL", field: "url", formatter: "link", headerTooltip:"Full website address" },
+            { title: "Visit Count", field: "visitCount", sorter: "number", headerTooltip:"This is how often you have visited this domain" },
+            { title: "Times Typed", field: "typedCount", sorter: "number", headerTooltip:"This is how often you've visited this domain after typing its address"  },
             {
                 title: "Last Visited",
                 field: "lastVisitTime",
@@ -110,12 +112,13 @@ function getHistory(startTime) {
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
-                    { title: "Name", field: "hostname", headerTooltip:"Domain name" },
-                    { title: "Visit Count", field: "visitCount", sorter: "number", headerTooltip:"visit times count" },
+                    { title: "Domain", field: "hostname", headerTooltip:"Domain name" },
+                    { title: "Visit Count", field: "visitCount", sorter: "number", headerTooltip:"This is how often you have visited this domain" },
+                    { title: "Times Typed", field: "typedCount", sorter: "number", headerTooltip:"This is how often you've visited this domain after typing its address"  },
                 ],
                 initialSort: [
                     { column: "visitCount", dir: "desc" },
-                    { column: "frequency", dir: "desc" },
+                    { column: "typedCount", dir: "desc" },
                 ],
                 sortOrderReverse: true,
             });
