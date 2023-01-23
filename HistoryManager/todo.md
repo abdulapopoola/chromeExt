@@ -1,3 +1,14 @@
+Coding
+3. Allow categories
+1. Set up each website category
+1. Map domains to category
+1. figure out how to extract time spent on each visit to a page
+1. Coalesce into a daily view for top pages?
+1. consider creating a one-hit wonder category to highlight mindless scrolling and time sinks on the internet
+
+Productivity
+1. Calculate a productivity score based on categories
+
 Styling
 1. Style the table page
 2. Show reloading and animations when the config buttons are clicked
@@ -8,11 +19,9 @@ Drill feature
 1. Hide the top-level view
 1. Add a back button to toggle
 
-Coding
-3. Allow categories
-4. figure out how to extract time spent on each visit to a page
-5. Coalesce into a daily view for top pages?
-6. consider creating a one-hit wonder category to highlight mindless scrolling and time sinks on the internet
+PopUp
+1. Style pop up to allow for options
+1. 
 
 Miscellaneous
 0. Figure out how to extract tabulator config to constants file and import it
