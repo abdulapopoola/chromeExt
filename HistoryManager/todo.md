@@ -1,3 +1,7 @@
+Styling
+1. Show two column layout
+1. Add entries
+
 Coding
 3. Allow categories
 1. Set up each website category
