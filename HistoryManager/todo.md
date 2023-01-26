@@ -1,4 +1,5 @@
 Styling
+1. Adopt fomantic UI: https://fomantic-ui.com/
 1. Show two column layout
 1. Add entries
 
