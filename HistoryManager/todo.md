@@ -1,5 +1,6 @@
 Styling
 1. Adopt fomantic UI: https://fomantic-ui.com/
+1. Only use required files in fomantic dist to minimize payload size; does this even matter given that this is an extension?
 1. Show two column layout
 1. Add entries
 
