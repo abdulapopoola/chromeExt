@@ -1,5 +1,6 @@
 Styling
-1. Show two column layout
+1. Show two column layout using columns and dividers
+1. Fix button styling
 1. Add more config entries to page
 
 Coding

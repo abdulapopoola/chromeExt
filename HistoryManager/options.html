@@ -1,54 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>History Analysis Options</title>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>History Analysis Options</title>
     <script src="./scripts/options.js" type="module"></script>
     <script src="./scripts/luxon.min.js"></script>
     <script type="text/javascript" src="./scripts/tabulator.min.js"></script>
     <script src="./scripts/jquery.min.js"></script>
     <script src="./dist/semantic.min.js"></script>
+    <link href="./styles/tabulator.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./dist/semantic.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="./styles/style.css" /> -->
 </head>
 
 <body>
-    <div class="header">
-        <h1>Time Tracker</h1>
-        <p>Track your browsing habits (especially the mindless clicking!); you'd be surprised by the one-hit wonders!!
-        </p>
-        <div id="buttons">
-            <button class="button-1" role="button" data-days="1">One Day</button>
-            <button class="button-1" role="button" data-days="7">One Week</button>
-            <button class="button-1" role="button" data-days="365">One Year</button>
-            <button class="button-1" role="button" data-days="10000000000">All time</button>
+    <div class="ui vertical inverted sidebar menu" id="toc">
+        <div class="item">
+            <b>History Manager</b>
         </div>
-    </div>
-    <div id="historyTable"></div>
-    <div id="drillTable"></div>
-    <i class="disabled users icon"></i>
-    <div class="ui vertical menu">
-        <a class="active teal item">
-            Inbox
-            <div class="ui teal left pointing label">1</div>
-        </a>
         <a class="item">
-            Spam
-            <div class="ui label">51</div>
-        </a>
-        <a class="item">
-            Updates
-            <div class="ui label">1</div>
+            <b>Table</b>
         </a>
         <div class="item">
-            <div class="ui transparent icon input">
-                <input type="text" placeholder="Search mail...">
-                <i class="search icon"></i>
+            <div class="header">Settings</div>
+            <div class="menu">
+                <a class="item">
+                    <b>Setting 1</b>
+                </a>
+                <a class="item">
+                    <b>Setting 2</b>
+                </a>
             </div>
         </div>
     </div>
-    <link href="./styles/tabulator.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./dist/semantic.min.css">
-    <link rel="stylesheet" type="text/css" href="./styles/style.css" />
+
+    <div class="ui black big launch right attached fixed button">
+        <i class="content icon"></i>
+        <span class="text">Menu</span>
+    </div>
+
+    <div class="ui fixed inverted main menu">
+        <div class="ui container">
+            <a class="launch icon item">
+                <i class="content icon"></i>
+            </a>
+
+            <div class="item">
+                History Manager
+            </div>
+
+            <div class="right menu">
+
+                <div class="vertically fitted borderless item">
+                    Track your browsing habits!
+                    <!-- Track your browsing habits (especially the mindless clicking!); you'd be surprised by the one-hit wonders!! -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pusher">
+        <div class="full height">
+            <div class="toc">
+                <div class="ui vertical inverted menu">
+                    <div class="item">
+                        <b>History Manager</b>
+                    </div>
+                    <a class="item">
+                        <b>Table</b>
+                    </a>
+                    <div class="item">
+                        <div class="header">Settings</div>
+                        <div class="menu">
+                            <a class="item">
+                                <b>Setting 1</b>
+                            </a>
+                            <a class="item">
+                                <b>Setting 2</b>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="article">
+                <div class="ui masthead vertical segment">
+                    <div class="ui container">
+                        <div class="introduction">
+                            <div class="sub header">
+                                <div id="buttons">
+                                    <button class="button-1" role="button" data-days="1">One Day</button>
+                                    <button class="button-1" role="button" data-days="7">One Week</button>
+                                    <button class="button-1" role="button" data-days="365">One Year</button>
+                                    <button class="button-1" role="button" data-days="10000000000">All time</button>
+                                </div>
+                            </div>
+                            <div class="ui right floated main menu">
+                                <a class="bug popup icon item" data-content="Change settings" href="">
+                                    <i class="edit icon"></i>
+                                </a>
+                            </div>
+
+                            <div class="ui hidden divider"></div>
+                            <h2 class="ui dividing header"></h2>
+                            <h1 class="ui header">
+                                <div id="historyTable"></div>
+                                <div id="drillTable"></div>
+                            </h1>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- TODO: Add links? 
+                    <footer class="ui vertical footer segment">
+                    <div class="ui container">
+                        <div class="ui stackable grid">
+                            <div class="three wide column">
+                                <h4 class="ui header">Community</h4>
+                                <div class="ui link list">
+                                    <a class="item" href="https://github.com/fomantic/Fomantic-UI/issues/new/choose"
+                                        target="_blank">
+                                        <i class="edit icon"></i>
+                                        Submit an Issue
+                                    </a>
+                                    <a class="item" href="https://github.com/" target="_blank">
+                                        <i class="github icon"></i>
+                                        GitHub Repository 
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui section divider"></div>
+                    </div>
+                </footer> -->
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
