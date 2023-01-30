@@ -130,9 +130,11 @@ function getHistory(startTime) {
         });
 }
 
-let buttons = $('buttons').getElementsByTagName('button');
+let buttons = $('buttons').children;
 for (const button of buttons) {
+    debugger;
     button.onclick = () => {
+        debugger;
         let days = parseInt(button.dataset.days, 10);
         let startTime = getLookBackStartTime(days);
         getHistory(startTime);
