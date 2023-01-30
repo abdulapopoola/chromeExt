@@ -1,5 +1,4 @@
 Styling
-1. Fix JS to pick new elements
 1. Show two column layout using columns and dividers
 1. Add more config entries to page
 
