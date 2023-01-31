@@ -1,4 +1,4 @@
-.header {
+/* .header {
     padding: 10px;
     text-align: center;
     background-image: linear-gradient(to left, #b393d3 45%, #553c9a);
@@ -37,4 +37,18 @@
 .button-1:hover,
 .button-1:focus {
     background-color: #b393d3;
+} */
+
+.leftPane {
+    position: fixed;
+    z-index: 1;
+    background-color: #1b1c1d;
+    width: 250px;
+    flex: 0 0 auto;
+}
+
+.mainContainer {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin-left: 250px;
 }
