@@ -1,3 +1,6 @@
+Engineering Efficiency
+1. Consider using angular or react or some new web framework for speed and productivity benefits? Since this is an extension, bundle size might not be a big concern
+
 Styling
 1. Show two column layout using columns and dividers
 1. Add more config entries to page
