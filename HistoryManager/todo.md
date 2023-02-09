@@ -1,9 +1,6 @@
-Engineering Efficiency
-1. Migrate todos to new project
-
 Styling
-1. Show two column layout using columns and dividers
-1. Add more config entries to page
+1. Hide sections on click
+1. Allow for left pane to select item in main page
 
 Coding
 3. Allow categories
@@ -21,6 +18,9 @@ Styling
 2. Show reloading and animations when the config buttons are clicked
 1. Style the drill table to show analysis
 1. Make selected button's style sticky
+1. Consider hiring a contractor to handle this
+
+Engineering Efficiency
 
 Drill feature
 1. Hide the top-level view
