@@ -1,7 +1,3 @@
-Styling
-1. Hide sections on click
-1. Allow for left pane to select item in main page
-
 Coding
 3. Allow categories
 1. Set up each website category
@@ -21,6 +17,8 @@ Styling
 1. Consider hiring a contractor to handle this
 
 Engineering Efficiency
+
+Styling
 
 Drill feature
 1. Hide the top-level view

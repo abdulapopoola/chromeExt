@@ -57,3 +57,15 @@
     margin: 0 !important;
     border-radius: 0 !important;
 }
+
+#dashboard,
+#categories,
+#settings {
+    display: none;
+}
+
+#dashboard:target,
+#categories:target,
+#settings:target {
+    display: block;
+}
