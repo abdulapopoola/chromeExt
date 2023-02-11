@@ -1,5 +1,6 @@
 Coding
 3. Allow categories
+1. Set up IndexedDB; read: https://pandaquests.medium.com/data-handling-with-indexdb-on-chrome-extension-cd36cf2c176e
 1. Set up each website category
 1. Map domains to category
 1. figure out how to extract time spent on each visit to a page
