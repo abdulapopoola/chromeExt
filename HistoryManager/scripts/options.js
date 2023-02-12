@@ -1,6 +1,28 @@
 const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24 * 1;
 const MAX_RESULTS = 100000;
 const $ = document.getElementById.bind(document);
+const CATEGORIES = [
+    'Education',
+    'Entertainment',
+    'Social Networking',
+    'Miscellaneous',
+    'News',
+    'ECommerce',
+    'Hobbies',
+    'Faith',
+    'Fitness',
+    'Sports',
+    'Forums',
+    'Mail',
+    'Utilities',
+    'Tools',
+    'Software Development',
+    'Reference',
+    'Blogs',
+    'Electronics',
+    'Video',
+    'Audio'
+];
 /*
     key: value
     baseURL: [{
@@ -12,7 +34,6 @@ const $ = document.getElementById.bind(document);
     Table of objects
     BaseURL, visitCount, 
 */
-
 function transformHistoryItems(historyItems) {
     let transformed = {};
     for (let item of historyItems) {
