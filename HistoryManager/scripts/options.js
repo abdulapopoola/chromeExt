@@ -1,6 +1,5 @@
 const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24 * 1;
 const MAX_RESULTS = 100000;
-const HEADERS = ['hostname', 'frequency', 'visitCount'];
 const $ = document.getElementById.bind(document);
 /*
     key: value

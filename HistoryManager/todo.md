@@ -9,6 +9,7 @@ Coding
 
 Productivity
 1. Calculate a productivity score based on categories
+1. Add charts
 
 Styling
 1. Style the table page
