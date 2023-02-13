@@ -1,5 +1,4 @@
 Coding
-3. Add more categories
 1. Set up IndexedDB; read: https://pandaquests.medium.com/data-handling-with-indexdb-on-chrome-extension-cd36cf2c176e
 1. Set up each website category
 1. Map domains to category
