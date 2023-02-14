@@ -103,10 +103,10 @@ function drill(data, historyItems) {
         movableColumns: true,
         paginationCounter: "rows",
         columns: [
-            { title: "Title", field: "title", headerTooltip:true },
-            { title: "URL", field: "url", formatter: "link", headerTooltip:"Full website address" },
-            { title: "Visit Count", field: "visitCount", sorter: "number", headerTooltip:"This is how often you have visited this domain" },
-            { title: "Times Typed", field: "typedCount", sorter: "number", headerTooltip:"This is how often you've visited this domain after typing its address"  },
+            { title: "Title", field: "title", headerTooltip: true },
+            { title: "URL", field: "url", formatter: "link", headerTooltip: "Full website address" },
+            { title: "Visit Count", field: "visitCount", sorter: "number", headerTooltip: "This is how often you have visited this domain" },
+            { title: "Times Typed", field: "typedCount", sorter: "number", headerTooltip: "This is how often you've visited this domain after typing its address" },
             {
                 title: "Last Visited",
                 field: "lastVisitTime",
@@ -154,9 +154,9 @@ function getHistory(startTime) {
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
-                    { title: "Domain", field: "hostname", headerTooltip:"Domain name" },
-                    { title: "Visit Count", field: "visitCount", sorter: "number", headerTooltip:"This is how often you have visited this domain" },
-                    { title: "Times Typed", field: "typedCount", sorter: "number", headerTooltip:"This is how often you've visited this domain after typing its address"  },
+                    { title: "Domain", field: "hostname", headerTooltip: "Domain name" },
+                    { title: "Visit Count", field: "visitCount", sorter: "number", headerTooltip: "This is how often you have visited this domain" },
+                    { title: "Times Typed", field: "typedCount", sorter: "number", headerTooltip: "This is how often you've visited this domain after typing its address" },
                 ],
                 initialSort: [
                     { column: "visitCount", dir: "desc" },
@@ -172,6 +172,17 @@ function getHistory(startTime) {
         });
 }
 
+async function loadCategories() {
+    await chrome.storage.local.set({ CATEGORIES });
+    return await chrome.storage.local.get('CATEGORIES');    
+}
+
+async function addWebsiteToCategory(website, category) {
+    // convert to host
+    // figure out category
+    // add it to it
+}
+
 let buttons = $('buttons').children;
 for (const button of buttons) {
     button.onclick = () => {
@@ -182,3 +193,4 @@ for (const button of buttons) {
 }
 
 getHistory();
+loadCategories();
