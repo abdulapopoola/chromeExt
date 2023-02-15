@@ -4,6 +4,8 @@ Coding
 1. figure out how to extract time spent on each visit to a page
 1. Coalesce into a daily view for top pages?
 1. consider creating a one-hit wonder category to highlight mindless scrolling and time sinks on the internet
+1. Delete stale data from chrome local storage
+1. Complete addWebsiteToCategory function and test it
 
 Productivity
 1. Calculate a productivity score based on categories

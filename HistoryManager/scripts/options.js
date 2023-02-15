@@ -172,14 +172,26 @@ function getHistory(startTime) {
         });
 }
 
-async function loadCategories() {
+async function setupDB() {
     await chrome.storage.local.set({ CATEGORIES });
-    return await chrome.storage.local.get('CATEGORIES');    
+    for (let category of CATEGORIES) {
+        await chrome.storage.local.set({ [category]: [] });
+    }
+}
+
+async function getCategories() {
+    await chrome.storage.local.set({ CATEGORIES });
+    return await chrome.storage.local.get();
 }
 
 async function addWebsiteToCategory(website, category) {
-    // convert to host
+    let url = new URL(website);
+    let hostname = url.hostname;
+
+    let db = await getCategories();
+    console.log(db);
     // figure out category
+    // do case insensitive search or matching
     // add it to it
 }
 
@@ -192,5 +204,7 @@ for (const button of buttons) {
     };
 }
 
+await setupDB();
 getHistory();
-loadCategories();
+await getCategories();
+await addWebsiteToCategory('https://www.bbc.com/news/world-us-canada-64644845', 'news');
