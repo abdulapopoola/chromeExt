@@ -179,20 +179,26 @@ async function setupDB() {
     }
 }
 
-async function getCategories() {
-    await chrome.storage.local.set({ CATEGORIES });
-    return await chrome.storage.local.get();
+async function getCategory(category) {
+    let key = category && category.toLowerCase() || '';
+    return await chrome.storage.local.get(key);
 }
 
-async function addWebsiteToCategory(website, category) {
+async function setCategory(category) {
+    let key = category && category.toLowerCase() || '';
+    return await chrome.storage.local.set(key);
+}
+
+async function addWebsiteHostToCategory(website, category) {
     let url = new URL(website);
     let hostname = url.hostname;
 
-    let db = await getCategories();
-    console.log(db);
-    // figure out category
-    // do case insensitive search or matching
-    // add it to it
+    let cat = await getCategory(category);
+    let values = Object.values(cat);
+    //debugger;
+    values.push(hostname);
+    values = [... new Set(values)];
+    await setCategory(category);
 }
 
 let buttons = $('buttons').children;
@@ -206,5 +212,5 @@ for (const button of buttons) {
 
 await setupDB();
 getHistory();
-await getCategories();
-await addWebsiteToCategory('https://www.bbc.com/news/world-us-canada-64644845', 'news');
+await getCategory();
+await addWebsiteHostToCategory('https://www.bbc.com/news/world-us-canada-64644845', 'news');
