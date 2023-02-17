@@ -1,5 +1,4 @@
 Coding
-1. Figure out why writing to a category does not work
 1. Set up each website category
 1. Map domains to category
 1. figure out how to extract time spent on each visit to a page
