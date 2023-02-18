@@ -210,6 +210,4 @@ for (const button of buttons) {
 
 await setupDB();
 getHistory();
-console.log(await getCategory());
-console.log(await getCategory('news'), 'news');
 await addWebsiteHostToCategory('https://www.bbc.com/news/world-us-canada-64644845', 'News');
