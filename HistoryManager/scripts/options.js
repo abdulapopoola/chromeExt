@@ -92,7 +92,7 @@ function getLookBackStartTime(days) {
 }
 
 function drill(data, historyItems) {
-    var t = new Tabulator("#drillTable", {
+    var t = new Tabulator("#historyDrillTable", {
         placeholder: "No Data Available",
         layout: "fitDataStretch",
         responsiveLayout: "collapse",
@@ -179,7 +179,7 @@ async function setupDB() {
     }
 }
 
-async function getCategory(category) {
+async function getData(category) {
     let key = category && category.toLowerCase();
     return await chrome.storage.local.get(key);
 }
@@ -192,11 +192,35 @@ async function addWebsiteHostToCategory(website, category) {
     let url = new URL(website);
     let hostname = url.hostname;
 
-    let cat = await getCategory(category);
+    let cat = await getData(category);
     let values = Object.values(cat);
     values.push(hostname);
     values = [... new Set(values)];
     await setCategory({ [category]: values });
+}
+
+async function getCategories() {
+    let categories = await getData();
+    // CONTINUE - ensure data shows up
+    console.log(categories);
+    let table = new Tabulator("#categoriesTable", {
+        placeholder: "No Data Available",
+        layout: "fitDataStretch",
+        responsiveLayout: "collapse",
+        selectable: 1,
+        data: categories.CATEGORIES,
+        pagination: "local",
+        paginationSize: 10,
+        paginationSizeSelector: [10, 20, 50],
+        movableColumns: true,
+        paginationCounter: "rows",
+        autoColumns: true,
+    });
+
+    table.on("rowClick", function (e, row) {
+        let data = row.getData();
+        drill(data, data.items);
+    });
 }
 
 let buttons = $('buttons').children;
@@ -210,4 +234,4 @@ for (const button of buttons) {
 
 await setupDB();
 getHistory();
-await addWebsiteHostToCategory('https://www.bbc.com/news/world-us-canada-64644845', 'News');
+await getCategories();

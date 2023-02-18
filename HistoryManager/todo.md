@@ -20,6 +20,7 @@ Styling
 1. Consider hiring a contractor to handle this
 
 Engineering Efficiency
+1. Find a better way to execute the categories code instead of loading it all at once at the beginning; lazy load
 
 Styling
 
