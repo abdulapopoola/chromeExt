@@ -180,8 +180,7 @@ async function setupDB() {
 }
 
 async function getData(category) {
-    let key = category && category.toLowerCase();
-    return await chrome.storage.local.get(key);
+    return await chrome.storage.local.get(category);
 }
 
 async function setCategory(payload) {
@@ -192,29 +191,33 @@ async function addWebsiteHostToCategory(website, category) {
     let url = new URL(website);
     let hostname = url.hostname;
 
-    let cat = await getData(category);
-    let values = Object.values(cat);
-    values.push(hostname);
-    values = [... new Set(values)];
-    await setCategory({ [category]: values });
+    let categoryData = await getData(category);
+    let entries = categoryData[category];
+    entries.push(hostname);
+    entries = [... new Set(entries)];
+    await setCategory({ [category]: entries });
 }
 
 async function getCategories() {
-    let categories = await getData();
-    // CONTINUE - ensure data shows up
-    console.log(categories);
+    let data = await getData();
+
+    let categoriesObject = data.CATEGORIES.map(
+        category => ({
+            category: category,
+            websites: data[category].length
+        }));
+
     let table = new Tabulator("#categoriesTable", {
         placeholder: "No Data Available",
-        layout: "fitDataStretch",
-        responsiveLayout: "collapse",
         selectable: 1,
-        data: categories.CATEGORIES,
+        data: categoriesObject,
         pagination: "local",
         paginationSize: 10,
         paginationSizeSelector: [10, 20, 50],
         movableColumns: true,
         paginationCounter: "rows",
         autoColumns: true,
+        responsiveLayout: "collapse",
     });
 
     table.on("rowClick", function (e, row) {
@@ -234,4 +237,7 @@ for (const button of buttons) {
 
 await setupDB();
 getHistory();
+await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
+await addWebsiteHostToCategory("https://punchng.com/illegal-detention-ex-aide-sues-aisha-buhari-for-n100m-2/", "News");
+await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
 await getCategories();
