@@ -1,6 +1,4 @@
 Coding
-1. Fix category column, sorting, and formatting
-1. Allow drilling into a category
 1. figure out how to extract time spent on each visit to a page
 1. Coalesce into a daily view for top pages?
 1. consider creating a one-hit wonder category to highlight mindless scrolling and time sinks on the internet

@@ -204,7 +204,8 @@ async function getCategories() {
     let categoriesObject = data.CATEGORIES.map(
         category => ({
             category: category,
-            count: data[category].length
+            count: data[category].length,
+            websites: data[category].map(entry => ({ website: entry }))
         }));
 
     let table = new Tabulator("#categoriesTable", {
@@ -213,8 +214,8 @@ async function getCategories() {
         selectable: 1,
         data: categoriesObject,
         pagination: "local",
-        paginationSize: 25,
-        paginationSizeSelector: [25, 50, 10],
+        paginationSize: 10,
+        paginationSizeSelector: [10, 25, 50],
         movableColumns: true,
         paginationCounter: "rows",
         responsiveLayout: "collapse",
@@ -224,14 +225,38 @@ async function getCategories() {
         ],
         initialSort: [
             { column: "count", dir: "desc" },
-            { column: "category", dir: "desc" },
+            { column: "category", dir: "asc" },
         ],
         sortOrderReverse: true,
     });
 
     table.on("rowClick", function (e, row) {
-        let data = row.getData();
-        drill(data, data.items);
+        let categoryObject = row.getData();
+        categoryDrill(categoryObject);
+        $('categoryHeader').innerText = categoryObject.category;
+    });
+}
+
+function categoryDrill(categoryData) {
+    var t = new Tabulator("#categoriesDrillTable", {
+        placeholder: "No Data Available",
+        layout: "fitDataStretch",
+        responsiveLayout: "collapse",
+        data: categoryData.websites,
+        pagination: "local",
+        paginationSize: 25,
+        selectable: 1,
+        paginationSizeSelector: [10, 25, 50],
+        movableColumns: true,
+        paginationCounter: "rows",
+        columns: [
+            {
+                title: "Website", field: "website", headerTooltip: true, formatter: "link", formatterParams: {
+                    urlPrefix: "https://",
+                    target: "_blank",
+                }
+            },
+        ],
     });
 }
 
