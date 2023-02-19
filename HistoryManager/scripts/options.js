@@ -204,20 +204,29 @@ async function getCategories() {
     let categoriesObject = data.CATEGORIES.map(
         category => ({
             category: category,
-            websites: data[category].length
+            count: data[category].length
         }));
 
     let table = new Tabulator("#categoriesTable", {
         placeholder: "No Data Available",
+        layout: "fitDataStretch",
         selectable: 1,
         data: categoriesObject,
         pagination: "local",
-        paginationSize: 10,
-        paginationSizeSelector: [10, 20, 50],
+        paginationSize: 25,
+        paginationSizeSelector: [25, 50, 10],
         movableColumns: true,
         paginationCounter: "rows",
-        autoColumns: true,
         responsiveLayout: "collapse",
+        columns: [
+            { title: "Category", field: "category", headerTooltip: "Category" },
+            { title: "Count", field: "count", sorter: "number", headerTooltip: "This is the number of websites in this category" },
+        ],
+        initialSort: [
+            { column: "count", dir: "desc" },
+            { column: "category", dir: "desc" },
+        ],
+        sortOrderReverse: true,
     });
 
     table.on("rowClick", function (e, row) {
