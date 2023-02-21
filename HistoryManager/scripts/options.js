@@ -260,6 +260,16 @@ function categoryDrill(categoryData) {
     });
 }
 
+function wipeStorage() {
+    chrome.storage.local.clear(function () {
+        var error = chrome.runtime.lastError;
+        if (error) {
+            console.error(error);
+        }
+        console.log('clear');
+    });
+}
+
 let buttons = $('buttons').children;
 for (const button of buttons) {
     button.onclick = () => {
@@ -269,6 +279,7 @@ for (const button of buttons) {
     };
 }
 
+wipeStorage();
 await setupDB();
 getHistory();
 await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
