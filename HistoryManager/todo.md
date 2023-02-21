@@ -13,7 +13,7 @@ Styling
 2. Show reloading and animations when the config buttons are clicked
 1. Style the drill table to show analysis
 1. Make selected button's style sticky
-1. Consider hiring a contractor to handle this
+1. Consider hiring a contractor to handle ux design
 
 Engineering Efficiency
 1. Find a better way to execute the categories code instead of loading it all at once at the beginning; lazy load
