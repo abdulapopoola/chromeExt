@@ -104,7 +104,12 @@ function drill(data, historyItems) {
         paginationCounter: "rows",
         columns: [
             { title: "Title", field: "title", headerTooltip: true },
-            { title: "URL", field: "url", formatter: "link", headerTooltip: "Full website address" },
+            {
+                title: "URL",
+                field: "url",
+                formatter: "link",
+                headerTooltip: "Full website address"
+            },
             { title: "Visit Count", field: "visitCount", sorter: "number", headerTooltip: "This is how often you have visited this domain" },
             { title: "Times Typed", field: "typedCount", sorter: "number", headerTooltip: "This is how often you've visited this domain after typing its address" },
             {
@@ -154,7 +159,16 @@ function getHistory(startTime) {
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
-                    { title: "Domain", field: "hostname", headerTooltip: "Domain name" },
+                    {
+                        title: "Domain",
+                        field: "hostname",
+                        headerTooltip: "Domain name",
+                        formatter: "link",
+                        formatterParams: {
+                            urlPrefix: "https://",
+                            target: "_blank",
+                        }
+                    },
                     { title: "Visit Count", field: "visitCount", sorter: "number", headerTooltip: "This is how often you have visited this domain" },
                     { title: "Times Typed", field: "typedCount", sorter: "number", headerTooltip: "This is how often you've visited this domain after typing its address" },
                 ],
@@ -251,7 +265,10 @@ function categoryDrill(categoryData) {
         paginationCounter: "rows",
         columns: [
             {
-                title: "Website", field: "website", headerTooltip: true, formatter: "link", formatterParams: {
+                title: "Website", field: "website",
+                headerTooltip: true,
+                formatter: "link",
+                formatterParams: {
                     urlPrefix: "https://",
                     target: "_blank",
                 }
