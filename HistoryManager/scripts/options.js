@@ -45,6 +45,14 @@ const CATEGORIES = [
     'Video Streaming',
     'Wiki',
 ];
+const editIcon = function (cell, formatterParams, onRendered) {
+    return "<i class='edit blue icon'></i>";
+};
+const deleteIcon = function (cell, formatterParams, onRendered) {
+    return "<i class='delete red icon'></i>";
+};
+
+
 /*
     key: value
     baseURL: [{
@@ -236,6 +244,20 @@ async function getCategories() {
         columns: [
             { title: "Category", field: "category", headerTooltip: "Category" },
             { title: "Count", field: "count", sorter: "number", headerTooltip: "This is the number of websites in this category" },
+            {
+                title: "Edit",
+                formatter: editIcon,
+                cellClick: function (e, cell) {
+                    alert("Printing row data for: " + cell.getRow().getData())
+                }
+            },
+            {
+                title: "Delete",
+                formatter: deleteIcon,
+                cellClick: function (e, cell) {
+                    alert("Printing row data for: " + cell.getRow().getData())
+                }
+            },
         ],
         initialSort: [
             { column: "count", dir: "desc" },
@@ -271,6 +293,20 @@ function categoryDrill(categoryData) {
                 formatterParams: {
                     urlPrefix: "https://",
                     target: "_blank",
+                }
+            },
+            {
+                title: "Edit",
+                formatter: editIcon,
+                cellClick: function (e, cell) {
+                    alert("Printing row data for: " + cell.getRow().getData())
+                }
+            },
+            {
+                title: "Delete",
+                formatter: deleteIcon,
+                cellClick: function (e, cell) {
+                    alert("Printing row data for: " + cell.getRow().getData())
                 }
             },
         ],
