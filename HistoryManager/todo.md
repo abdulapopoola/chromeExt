@@ -1,5 +1,6 @@
 Coding
-1. Delete category should remove category - wipe it from storage history and validate it works
+1. Delete website entry from category? Is this needed or should it be prevented?
+1. Should editing categories be allowed?
 1. Delete website should remove it from history?
 
 Productivity
