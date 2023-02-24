@@ -6,7 +6,6 @@ const CATEGORIES = [
     'Audio',
     'Blogs',
     'Business',
-    'Business',
     'Causes',
     'Coupon',
     'ECommerce',
@@ -255,7 +254,8 @@ async function getCategories() {
                 title: "Delete",
                 formatter: deleteIcon,
                 cellClick: function (e, cell) {
-                    alert("Printing row data for: " + cell.getRow().getData())
+                    let data = cell.getData();
+                    deleteCategory(data.category, cell.getRow());
                 }
             },
         ],
@@ -270,6 +270,12 @@ async function getCategories() {
         let categoryObject = row.getData();
         categoryDrill(categoryObject);
         $('categoryHeader').innerText = categoryObject.category;
+    });
+}
+
+function deleteCategory(category, row) {
+    chrome.storage.local.remove([category], (result) => {
+        row.delete();
     });
 }
 
