@@ -24,6 +24,7 @@ const CATEGORIES = [
     'Miscellaneous',
     'News',
     'Non-profit',
+    'Other',
     'Parenting',
     'Personal',
     'Political',
