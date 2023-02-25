@@ -1,6 +1,6 @@
 Coding
 1. Delete website entry from category? Is this needed or should it be prevented?
-1. Should editing categories be allowed?
+1. Should editing categories be allowed? Use this to arrive at the user experience? https://stackoverflow.com/questions/60612346/how-to-make-only-the-selected-row-editable-in-tabulator
 1. Delete website should remove it from history?
 
 Productivity

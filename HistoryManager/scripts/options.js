@@ -242,7 +242,16 @@ async function getCategories() {
         paginationCounter: "rows",
         responsiveLayout: "collapse",
         columns: [
-            { title: "Category", field: "category", headerTooltip: "Category" },
+            {
+                title: "Category", field: "category", headerTooltip: "Category", editor: "input", editorParams: {
+                    search: true,
+                    mask: "AAA-999",
+                    selectContents: true,
+                    elementAttributes: {
+                        maxlength: "10", //set the maximum character length of the input element to 10 characters
+                    }
+                }
+            },
             { title: "Count", field: "count", sorter: "number", headerTooltip: "This is the number of websites in this category" },
             {
                 title: "Edit",
@@ -300,13 +309,6 @@ function categoryDrill(categoryData) {
                 formatterParams: {
                     urlPrefix: "https://",
                     target: "_blank",
-                }
-            },
-            {
-                title: "Edit",
-                formatter: editIcon,
-                cellClick: function (e, cell) {
-                    alert("Printing row data for: " + cell.getRow().getData())
                 }
             },
             {
