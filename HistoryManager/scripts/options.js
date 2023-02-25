@@ -243,7 +243,11 @@ async function getCategories() {
         responsiveLayout: "collapse",
         columns: [
             {
-                title: "Category", field: "category", headerTooltip: "Category", editor: "input", editorParams: {
+                title: "Category",
+                field: "category",
+                headerTooltip: "Category",
+                editor: "input",
+                editorParams: {
                     search: true,
                     mask: "AAA-999",
                     selectContents: true,
@@ -257,7 +261,7 @@ async function getCategories() {
                 title: "Edit",
                 formatter: editIcon,
                 cellClick: function (e, cell) {
-                    alert("Printing row data for: " + cell.getRow().getData())
+                    cell.getRow().getCell('category').edit()
                 }
             },
             {
@@ -281,6 +285,10 @@ async function getCategories() {
         categoryDrill(categoryObject);
         $('categoryHeader').innerText = categoryObject.category;
     });
+}
+
+function editIconClicked(cell) {
+    return cell.getRow().isSelected()
 }
 
 function deleteCategory(category, row) {
@@ -348,3 +356,120 @@ await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-6468435
 await addWebsiteHostToCategory("https://punchng.com/illegal-detention-ex-aide-sues-aisha-buhari-for-n100m-2/", "News");
 await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
 await getCategories();
+
+function formatter_EditButton(cell, formatterParams, onRendered) {
+    return "<div class='btn badge badge-pill badge-secondary'>Edit</div>";
+}
+function formatter_CancelButton(cell, formatterParams, onRendered) {
+    return "<div class='btn badge badge-pill badge-warning'>Cancel</div>";
+}
+function formatter_SaveButton(cell, formatterParams, onRendered) {
+    return "<div class='btn badge badge-pill badge-success'>Save</div>";
+}
+function formatter_DeleteButton(cell, formatterParams, onRendered) {
+    return "<div class='btn badge badge-pill badge-danger'>Delete</div>";
+}
+
+function cellClick_EditButton(e, cell) {
+    currentRow = cell.getRow()
+    currentTable = cell.getTable()
+    selectedRows = currentTable.getSelectedRows()
+    if (selectedRows.length == 0) {
+        for (i = 0; i < selectedRows.length; i++) {
+            selectedRows[i].deselect()
+            selectedRows[i].reformat()
+        }
+        currentTable.deselectRow()
+        currentRow.select()
+        currentRow.reformat()
+
+        cells = currentRow.getCells()
+        for (i = 0; i < cells.length; i++) {
+            cells[i].setValue(cells[i].getValue())
+        }
+        currentTable.hideColumn("EditButton")
+        currentTable.showColumn("CancelButton")
+        currentTable.showColumn("DeleteButton")
+        currentTable.showColumn("SaveButton")
+    }
+}
+function cellClick_CancelButton(e, cell) {
+    if (!cell.getRow().isSelected()) {
+        return
+    }
+    currentRow = cell.getRow()
+    currentTable = cell.getTable()
+    if (cell.getRow().isSelected()) {
+        //Cancel
+        cells = currentRow.getCells()
+        for (i = 0; i < cells.length; i++) {
+            cells[i].restoreOldValue();
+        }
+        stopEditing(cell)
+    }
+}
+function cellClick_SaveButton(e, cell) {
+    if (!cell.getRow().isSelected()) {
+        return
+    }
+    stopEditing(cell)
+}
+function cellClick_DeleteButton(e, cell) {
+    if (!cell.getRow().isSelected()) {
+        return
+    }
+    //Can use prompt to make them connfirm the name
+    if (window.confirm("Delete the user " + cell.getData().FirstName + " " + cell.getData().LastName + "?")) {
+        stopEditing(cell)
+        cell.getRow().delete()
+    }
+}
+function stopEditing(cell) {
+    currentRow = cell.getRow()
+    currentTable = cell.getTable()
+    currentTable.deselectRow()
+    currentTable.showColumn("EditButton")
+    currentTable.hideColumn("CancelButton")
+    currentTable.hideColumn("DeleteButton")
+    currentTable.hideColumn("SaveButton")
+    currentRow.reformat()
+}
+
+function isRowSelected(cell) {
+    return cell.getRow().isSelected()
+}
+
+function cellClick_FlipIfSelected(e, cell) {
+    if (cell.getRow().isSelected()) {
+        cell.setValue(!cell.getValue())
+    }
+}
+
+// var UsersTable = new Tabulator("#UsersTable", {
+//     index: "ID",
+//     ajaxURL: "/api/getUsersData",
+//     layout: "fitDataFill",
+//     layoutColumnsOnNewData: true,
+//     paginationSize: 10,
+//     pagination: "local",
+//     selectable: false,
+//     initialSort: [
+//         { column: "FirstName", dir: "asc" },
+//         { column: "LastName", dir: "asc" },
+//         { column: "Active", dir: "desc" }
+//     ],
+//     columns: [
+//         { title: "Active", field: "Active", formatter: "tickCross", mutator: mutator_Active, cellClick: cellClick_FlipIfSelected, align: "center", resizable: false },
+//         { title: "ID", field: "ID" },
+//         { title: "Last", field: "LastName", editable: isRowSelected, editor: "input", resizable: false },
+//         { title: "First", field: "FirstName", editable: isRowSelected, editor: "input", resizable: false },
+//         { title: "Email", field: "Email", editable: isRowSelected, editor: "input", resizable: false },
+//         { title: "Phone Number", field: "PhoneNumber", editable: isRowSelected, editor: "input", resizable: false },
+//         { title: "Created", field: "CreatedAt", editable: isRowSelected, formatter: "datetime", resizable: false },
+//         { title: "Updated", field: "UpdatedAt", editable: isRowSelected, formatter: "datetime", resizable: false },
+//         { field: "EditButton", formatter: formatter_EditButton, cellClick: cellClick_EditButton, headerSort: false, align: "center", resizable: false },
+//         { field: "CancelButton", formatter: formatter_CancelButton, cellClick: cellClick_CancelButton, headerSort: false, align: "center", resizable: false, visible: false },
+//         { field: "SaveButton", formatter: formatter_SaveButton, cellClick: cellClick_SaveButton, headerSort: false, align: "center", resizable: false, visible: false },
+//         { field: "DeleteButton", formatter: formatter_DeleteButton, cellClick: cellClick_DeleteButton, headerSort: false, align: "center", resizable: false, visible: false },
+//     ]
+// })
