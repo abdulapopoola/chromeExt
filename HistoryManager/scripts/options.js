@@ -247,13 +247,9 @@ async function getCategories() {
                 field: "category",
                 headerTooltip: "Category",
                 editor: "input",
+                editable: false,
                 editorParams: {
-                    search: true,
-                    mask: "AAA-999",
                     selectContents: true,
-                    elementAttributes: {
-                        maxlength: "10", //set the maximum character length of the input element to 10 characters
-                    }
                 }
             },
             { title: "Count", field: "count", sorter: "number", headerTooltip: "This is the number of websites in this category" },
@@ -261,15 +257,19 @@ async function getCategories() {
                 title: "Edit",
                 formatter: editIcon,
                 cellClick: function (e, cell) {
-                    cell.getRow().getCell('category').edit()
+                    cell.getRow().getCell('category').edit(true);
                 }
             },
             {
                 title: "Delete",
                 formatter: deleteIcon,
                 cellClick: function (e, cell) {
-                    let data = cell.getData();
-                    deleteCategory(data.category, cell.getRow());
+                    // CONTINUE
+                    if (window.confirm("Delete category " + cell.getData().FirstName + " " + cell.getData().LastName + "?")) {
+                        //stopEditing(cell)
+                        let data = cell.getData();
+                        deleteCategory(data.category, cell.getRow());
+                    }
                 }
             },
         ],
@@ -293,6 +293,7 @@ function editIconClicked(cell) {
 
 function deleteCategory(category, row) {
     chrome.storage.local.remove([category], (result) => {
+        // delete row from table
         row.delete();
     });
 }
@@ -413,16 +414,6 @@ function cellClick_SaveButton(e, cell) {
         return
     }
     stopEditing(cell)
-}
-function cellClick_DeleteButton(e, cell) {
-    if (!cell.getRow().isSelected()) {
-        return
-    }
-    //Can use prompt to make them connfirm the name
-    if (window.confirm("Delete the user " + cell.getData().FirstName + " " + cell.getData().LastName + "?")) {
-        stopEditing(cell)
-        cell.getRow().delete()
-    }
 }
 function stopEditing(cell) {
     currentRow = cell.getRow()
