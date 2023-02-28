@@ -264,10 +264,8 @@ async function getCategories() {
                 title: "Delete",
                 formatter: deleteIcon,
                 cellClick: function (e, cell) {
-                    // CONTINUE
-                    if (window.confirm("Delete category " + cell.getData().FirstName + " " + cell.getData().LastName + "?")) {
-                        //stopEditing(cell)
-                        let data = cell.getData();
+                    let data = cell.getData();
+                    if (window.confirm(`Delete category: ${data.category}?`)) {
                         deleteCategory(data.category, cell.getRow());
                     }
                 }

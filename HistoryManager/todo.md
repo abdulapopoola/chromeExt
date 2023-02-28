@@ -1,7 +1,7 @@
 Coding
 1. Figure out how to edit the cell contents and save it
-1. Delete should pop up confirmatory dialog
 1. Delete website should remove it from history?
+1. Delete a row should clear its selection and HTML entry
 1. Delete website entry from category? Is this needed or should it be prevented?
 1. Allow users to define their own categories and provide a short list of seed categories
 
