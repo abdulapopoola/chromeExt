@@ -51,6 +51,9 @@ const editIcon = function (cell, formatterParams, onRendered) {
 const deleteIcon = function (cell, formatterParams, onRendered) {
     return "<i class='delete red icon'></i>";
 };
+const drillIcon = function (cell, formatterParams, onRendered) {
+    return "<i class='arrow circle down green icon'></i>";
+};
 
 
 /*
@@ -254,6 +257,15 @@ async function getCategories() {
             },
             { title: "Count", field: "count", sorter: "number", headerTooltip: "This is the number of websites in this category" },
             {
+                title: "Drill",
+                formatter: drillIcon,
+                cellClick: function (e, cell) {
+                    let categoryObject = cell.getData();
+                    categoryDrill(categoryObject);
+                    $('categoryHeader').innerText = categoryObject.category;
+                }
+            },
+            {
                 title: "Edit",
                 formatter: editIcon,
                 cellClick: function (e, cell) {
@@ -276,12 +288,6 @@ async function getCategories() {
             { column: "category", dir: "asc" },
         ],
         sortOrderReverse: true,
-    });
-
-    table.on("rowClick", function (e, row) {
-        let categoryObject = row.getData();
-        categoryDrill(categoryObject);
-        $('categoryHeader').innerText = categoryObject.category;
     });
 }
 
