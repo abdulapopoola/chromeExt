@@ -30,6 +30,7 @@ const CATEGORIES = [
     'Political',
     'Portal',
     'Portfolio',
+    'Productivity',
     'Q&A',
     'Reference',
     'Search engine',
