@@ -4,6 +4,7 @@ Coding
 1. Consider drilling by clicking other cells (e.g. title and more) for a better UX? Or hiding/re-enabling the buttons on select?
 1. Delete website entry from category? Is this needed or should it be prevented?
 1. Allow users to define their own categories and provide a short list of seed categories
+1. If there is no data; do not show the categories table 
 
 Productivity
 1. Calculate a productivity score based on categories
