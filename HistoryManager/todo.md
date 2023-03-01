@@ -1,10 +1,14 @@
 Coding
-1. Figure out how to edit the cell contents and save it
+1. Figure out how to edit the cell contents and save it; on save update the category header too
+    1. Consider replacing the edit icon with a save icon when this is clicked;
+    1. consider reusing the addWebsiteHostToCategory method
 1. Delete website should remove it from history? Confirm and then delete
 1. Consider drilling by clicking other cells (e.g. title and more) for a better UX? Or hiding/re-enabling the buttons on select?
 1. Delete website entry from category? Is this needed or should it be prevented?
 1. Allow users to define their own categories and provide a short list of seed categories
 1. If there is no data; do not show the categories table 
+1. Allow for searching through categories?
+1. Add intelligent categorization of websites
 
 Productivity
 1. Calculate a productivity score based on categories

@@ -414,12 +414,14 @@ function cellClick_CancelButton(e, cell) {
         stopEditing(cell)
     }
 }
+
 function cellClick_SaveButton(e, cell) {
     if (!cell.getRow().isSelected()) {
         return
     }
     stopEditing(cell)
 }
+
 function stopEditing(cell) {
     currentRow = cell.getRow()
     currentTable = cell.getTable()
@@ -439,33 +441,4 @@ function cellClick_FlipIfSelected(e, cell) {
     if (cell.getRow().isSelected()) {
         cell.setValue(!cell.getValue())
     }
-}
-
-// var UsersTable = new Tabulator("#UsersTable", {
-//     index: "ID",
-//     ajaxURL: "/api/getUsersData",
-//     layout: "fitDataFill",
-//     layoutColumnsOnNewData: true,
-//     paginationSize: 10,
-//     pagination: "local",
-//     selectable: false,
-//     initialSort: [
-//         { column: "FirstName", dir: "asc" },
-//         { column: "LastName", dir: "asc" },
-//         { column: "Active", dir: "desc" }
-//     ],
-//     columns: [
-//         { title: "Active", field: "Active", formatter: "tickCross", mutator: mutator_Active, cellClick: cellClick_FlipIfSelected, align: "center", resizable: false },
-//         { title: "ID", field: "ID" },
-//         { title: "Last", field: "LastName", editable: isRowSelected, editor: "input", resizable: false },
-//         { title: "First", field: "FirstName", editable: isRowSelected, editor: "input", resizable: false },
-//         { title: "Email", field: "Email", editable: isRowSelected, editor: "input", resizable: false },
-//         { title: "Phone Number", field: "PhoneNumber", editable: isRowSelected, editor: "input", resizable: false },
-//         { title: "Created", field: "CreatedAt", editable: isRowSelected, formatter: "datetime", resizable: false },
-//         { title: "Updated", field: "UpdatedAt", editable: isRowSelected, formatter: "datetime", resizable: false },
-//         { field: "EditButton", formatter: formatter_EditButton, cellClick: cellClick_EditButton, headerSort: false, align: "center", resizable: false },
-//         { field: "CancelButton", formatter: formatter_CancelButton, cellClick: cellClick_CancelButton, headerSort: false, align: "center", resizable: false, visible: false },
-//         { field: "SaveButton", formatter: formatter_SaveButton, cellClick: cellClick_SaveButton, headerSort: false, align: "center", resizable: false, visible: false },
-//         { field: "DeleteButton", formatter: formatter_DeleteButton, cellClick: cellClick_DeleteButton, headerSort: false, align: "center", resizable: false, visible: false },
-//     ]
-// })
+} 
