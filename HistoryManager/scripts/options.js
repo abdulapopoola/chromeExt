@@ -254,6 +254,10 @@ async function getCategories() {
                 cellClick: function (e, cell) {
                     let categoryObject = cell.getData();
                     categoryDrill(categoryObject);
+                    // continue
+                    // Get table reference for drill yet; consider isolating in a new function?
+                    // if it exists, reuse; otherwise initiate it
+                    // on delete, retrieve that table reference and if it matches the selected, delete it
                     $('categoryHeader').innerText = categoryObject.category;
                 }
             },
