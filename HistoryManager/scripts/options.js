@@ -52,10 +52,6 @@ const editIcon = function (cell, formatterParams, onRendered) {
 const deleteIcon = function (cell, formatterParams, onRendered) {
     return "<i class='delete red icon'></i>";
 };
-const drillIcon = function (cell, formatterParams, onRendered) {
-    return "<i class='arrow circle down green icon'></i>";
-};
-
 
 /*
     key: value
@@ -254,12 +250,18 @@ async function getCategories() {
                 editable: false,
                 editorParams: {
                     selectContents: true,
+                },
+                cellClick: function (e, cell) {
+                    let categoryObject = cell.getData();
+                    categoryDrill(categoryObject);
+                    $('categoryHeader').innerText = categoryObject.category;
                 }
             },
-            { title: "Count", field: "count", sorter: "number", headerTooltip: "This is the number of websites in this category" },
             {
-                title: "Drill",
-                formatter: drillIcon,
+                title: "Count",
+                field: "count",
+                sorter: "number",
+                headerTooltip: "This is the number of websites in this category",
                 cellClick: function (e, cell) {
                     let categoryObject = cell.getData();
                     categoryDrill(categoryObject);
