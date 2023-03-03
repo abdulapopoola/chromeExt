@@ -52,6 +52,7 @@ const editIcon = function (cell, formatterParams, onRendered) {
 const deleteIcon = function (cell, formatterParams, onRendered) {
     return "<i class='delete red icon'></i>";
 };
+let selectedCategory = '';
 
 /*
     key: value
@@ -252,13 +253,7 @@ async function getCategories() {
                     selectContents: true,
                 },
                 cellClick: function (e, cell) {
-                    let categoryObject = cell.getData();
-                    categoryDrill(categoryObject);
-                    // continue
-                    // Get table reference for drill yet; consider isolating in a new function?
-                    // if it exists, reuse; otherwise initiate it
-                    // on delete, retrieve that table reference and if it matches the selected, delete it
-                    $('categoryHeader').innerText = categoryObject.category;
+                    categoryDrill(e, cell);
                 }
             },
             {
@@ -267,9 +262,7 @@ async function getCategories() {
                 sorter: "number",
                 headerTooltip: "This is the number of websites in this category",
                 cellClick: function (e, cell) {
-                    let categoryObject = cell.getData();
-                    categoryDrill(categoryObject);
-                    $('categoryHeader').innerText = categoryObject.category;
+                    categoryDrill(e, cell);
                 }
             },
             {
@@ -306,10 +299,22 @@ function deleteCategory(category, row) {
     chrome.storage.local.remove([category], (result) => {
         // delete row from table
         row.delete();
+        debugger;
+        if (selectedCategory === category) {
+            $('categoryHeader').style.display = 'none';
+            selectedCategory = '';
+
+            //CONTINUE: hide the container
+            // Find way to restore it on click and refresh the table
+        }
     });
 }
 
-function categoryDrill(categoryData) {
+function categoryDrill(e, cell) {
+    let categoryData = cell.getData();
+    $('categoryHeader').innerText = categoryData.category;
+    selectedCategory = categoryData.category;
+
     var t = new Tabulator("#categoriesDrillTable", {
         placeholder: "No Data Available",
         layout: "fitDataStretch",
