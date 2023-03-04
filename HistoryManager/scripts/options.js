@@ -297,15 +297,11 @@ function editIconClicked(cell) {
 
 function deleteCategory(category, row) {
     chrome.storage.local.remove([category], (result) => {
-        // delete row from table
         row.delete();
-        debugger;
         if (selectedCategory === category) {
             $('categoryHeader').style.display = 'none';
+            $('categoriesDrillTable').style.display = 'none';
             selectedCategory = '';
-
-            //CONTINUE: hide the container
-            // Find way to restore it on click and refresh the table
         }
     });
 }
@@ -313,6 +309,7 @@ function deleteCategory(category, row) {
 function categoryDrill(e, cell) {
     let categoryData = cell.getData();
     $('categoryHeader').innerText = categoryData.category;
+    $('categoryHeader').style.display = 'block';
     selectedCategory = categoryData.category;
 
     var t = new Tabulator("#categoriesDrillTable", {
