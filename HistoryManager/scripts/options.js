@@ -270,6 +270,8 @@ async function getCategories() {
                 formatter: editIcon,
                 cellClick: function (e, cell) {
                     cell.getRow().getCell('category').edit(true);
+                    // CONTINUE: fix this
+                    // Figure out what triggers save on cell
                 }
             },
             {
