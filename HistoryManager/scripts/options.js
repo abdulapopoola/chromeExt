@@ -254,7 +254,17 @@ async function getCategories() {
                 },
                 cellClick: function (e, cell) {
                     categoryDrill(e, cell);
-                }
+                },
+                cellEditCancelled: function (cell) {
+                    //cell - cell component
+                    console.log('cancelled');
+                    debugger;
+                },
+                cellEdited: function (cell) {
+                    //cell - cell component
+                    console.log('done');
+                    debugger;
+                },
             },
             {
                 title: "Count",
@@ -270,20 +280,6 @@ async function getCategories() {
                 formatter: editIcon,
                 cellClick: function (e, cell) {
                     cell.getRow().getCell('category').edit(true);
-                    // CONTINUE: fix this
-                    // see https://github.com/olifolkerd/tabulator/issues/3536
-                    // Figure out what triggers save on cell
-                    debugger;
-                },
-                cellEditCancelled: function (cell) {
-                    //cell - cell component
-                    console.log('cancelled');
-                    debugger;
-                },
-                cellEdited: function (cell) {
-                    //cell - cell component
-                    console.log('done');
-                    debugger;
                 },
             },
             {
@@ -302,10 +298,6 @@ async function getCategories() {
             { column: "category", dir: "asc" },
         ],
         sortOrderReverse: true,
-    });
-
-    table.on("cellEdited", function (cell) {
-        alert("HERE");
     });
 }
 
