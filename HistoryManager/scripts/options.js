@@ -303,6 +303,10 @@ async function getCategories() {
         ],
         sortOrderReverse: true,
     });
+
+    table.on("cellEdited", function (cell) {
+        alert("HERE");
+    });
 }
 
 function editIconClicked(cell) {
