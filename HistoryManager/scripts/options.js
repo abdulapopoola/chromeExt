@@ -256,7 +256,8 @@ async function getCategories() {
                     categoryDrill(e, cell);
                 },
                 cellEdited: function (cell) {
-                    //cell - cell component
+                    // cell - cell component
+                    // consider reusing the addWebsiteHostToCategory method to save this back to the local storage
                     console.log('done');
                     debugger;
                 },
