@@ -296,10 +296,6 @@ async function getCategories() {
     });
 }
 
-function editIconClicked(cell) {
-    return cell.getRow().isSelected()
-}
-
 function deleteCategory(category, row) {
     chrome.storage.local.remove([category], (result) => {
         row.delete();
