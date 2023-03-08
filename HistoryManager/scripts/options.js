@@ -255,11 +255,6 @@ async function getCategories() {
                 cellClick: function (e, cell) {
                     categoryDrill(e, cell);
                 },
-                cellEditCancelled: function (cell) {
-                    //cell - cell component
-                    console.log('cancelled');
-                    debugger;
-                },
                 cellEdited: function (cell) {
                     //cell - cell component
                     console.log('done');
@@ -380,83 +375,3 @@ await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-6468435
 await addWebsiteHostToCategory("https://punchng.com/illegal-detention-ex-aide-sues-aisha-buhari-for-n100m-2/", "News");
 await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
 await getCategories();
-
-function formatter_EditButton(cell, formatterParams, onRendered) {
-    return "<div class='btn badge badge-pill badge-secondary'>Edit</div>";
-}
-function formatter_CancelButton(cell, formatterParams, onRendered) {
-    return "<div class='btn badge badge-pill badge-warning'>Cancel</div>";
-}
-function formatter_SaveButton(cell, formatterParams, onRendered) {
-    return "<div class='btn badge badge-pill badge-success'>Save</div>";
-}
-function formatter_DeleteButton(cell, formatterParams, onRendered) {
-    return "<div class='btn badge badge-pill badge-danger'>Delete</div>";
-}
-
-function cellClick_EditButton(e, cell) {
-    currentRow = cell.getRow()
-    currentTable = cell.getTable()
-    selectedRows = currentTable.getSelectedRows()
-    if (selectedRows.length == 0) {
-        for (i = 0; i < selectedRows.length; i++) {
-            selectedRows[i].deselect()
-            selectedRows[i].reformat()
-        }
-        currentTable.deselectRow()
-        currentRow.select()
-        currentRow.reformat()
-
-        cells = currentRow.getCells()
-        for (i = 0; i < cells.length; i++) {
-            cells[i].setValue(cells[i].getValue())
-        }
-        currentTable.hideColumn("EditButton")
-        currentTable.showColumn("CancelButton")
-        currentTable.showColumn("DeleteButton")
-        currentTable.showColumn("SaveButton")
-    }
-}
-function cellClick_CancelButton(e, cell) {
-    if (!cell.getRow().isSelected()) {
-        return
-    }
-    currentRow = cell.getRow()
-    currentTable = cell.getTable()
-    if (cell.getRow().isSelected()) {
-        //Cancel
-        cells = currentRow.getCells()
-        for (i = 0; i < cells.length; i++) {
-            cells[i].restoreOldValue();
-        }
-        stopEditing(cell)
-    }
-}
-
-function cellClick_SaveButton(e, cell) {
-    if (!cell.getRow().isSelected()) {
-        return
-    }
-    stopEditing(cell)
-}
-
-function stopEditing(cell) {
-    currentRow = cell.getRow()
-    currentTable = cell.getTable()
-    currentTable.deselectRow()
-    currentTable.showColumn("EditButton")
-    currentTable.hideColumn("CancelButton")
-    currentTable.hideColumn("DeleteButton")
-    currentTable.hideColumn("SaveButton")
-    currentRow.reformat()
-}
-
-function isRowSelected(cell) {
-    return cell.getRow().isSelected()
-}
-
-function cellClick_FlipIfSelected(e, cell) {
-    if (cell.getRow().isSelected()) {
-        cell.setValue(!cell.getValue())
-    }
-} 
