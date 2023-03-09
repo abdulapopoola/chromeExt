@@ -256,10 +256,7 @@ async function getCategories() {
                     categoryDrill(e, cell);
                 },
                 cellEdited: function (cell) {
-                    // cell - cell component
-                    // consider reusing the addWebsiteHostToCategory method to save this back to the local storage
-                    console.log('done');
-                    debugger;
+                    updateWebSiteCategory(cell);
                 },
             },
             {
@@ -295,6 +292,14 @@ async function getCategories() {
         ],
         sortOrderReverse: true,
     });
+}
+
+function updateWebSiteCategory(cell) {
+    // cell - cell component
+    // Get cell value
+    // Set it in storage
+    // if it fails, restore old value?
+    // consider reusing the addWebsiteHostToCategory method to save this back to the local storage
 }
 
 function deleteCategory(category, row) {
