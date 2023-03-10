@@ -2,6 +2,7 @@ Coding
 1. Figure out how to edit the cell contents and save it; on save update the category header too
     1. Consider replacing the edit icon with a save icon when this is clicked;
     1. consider reusing the addWebsiteHostToCategory method
+    1. Figure out why it doesn't write it
 1. Delete website should remove it from history? Confirm and then delete
 1. Consider drilling by clicking other cells (e.g. title and more) for a better UX? Or hiding/re-enabling the buttons on select?
 1. Delete website entry from category? Is this needed or should it be prevented?

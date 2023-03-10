@@ -255,8 +255,8 @@ async function getCategories() {
                 cellClick: function (e, cell) {
                     categoryDrill(e, cell);
                 },
-                cellEdited: function (cell) {
-                    updateWebSiteCategory(cell);
+                cellEdited: async function (cell) {
+                    await updateWebSiteCategory(cell);
                 },
             },
             {
@@ -294,12 +294,13 @@ async function getCategories() {
     });
 }
 
-function updateWebSiteCategory(cell) {
-    // cell - cell component
-    // Get cell value
-    // Set it in storage
-    // if it fails, restore old value?
-    // consider reusing the addWebsiteHostToCategory method to save this back to the local storage
+async function updateWebSiteCategory(cell) {
+    let initialCellValue = cell.getInitialValue();
+    
+    let storedData = await getData(initialCellValue);
+    let entries = storedData[initialCellValue];
+    let category = cell.getData().category;
+    await setCategory({ [category]: entries });
 }
 
 function deleteCategory(category, row) {
@@ -357,7 +358,6 @@ function wipeStorage() {
         if (error) {
             console.error(error);
         }
-        console.log('clear');
     });
 }
 
@@ -374,6 +374,5 @@ wipeStorage();
 await setupDB();
 getHistory();
 await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
-await addWebsiteHostToCategory("https://punchng.com/illegal-detention-ex-aide-sues-aisha-buhari-for-n100m-2/", "News");
 await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
 await getCategories();
