@@ -47,3 +47,4 @@ Miscellaneous
 5. how do extensions get a settings page
 6. extract out the time ranges for each
 7. Consider adopting classes instead of standalone functions
+1. App crashes when both wipeStorage() and await setupDB(); are commented out
