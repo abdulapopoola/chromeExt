@@ -3,6 +3,8 @@ Coding
     1. Consider replacing the edit icon with a save icon when this is clicked;
     1. consider reusing the addWebsiteHostToCategory method
     1. Figure out why it doesn't write it
+    1. After editing a cell; it should update the title if it is the selected one
+    1. Update the default CATEGORIES constant array or leave as is to allow for default settings to be reset?
 1. Delete website should remove it from history? Confirm and then delete
 1. Consider drilling by clicking other cells (e.g. title and more) for a better UX? Or hiding/re-enabling the buttons on select?
 1. Delete website entry from category? Is this needed or should it be prevented?

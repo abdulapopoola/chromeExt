@@ -301,6 +301,12 @@ async function updateWebSiteCategory(cell) {
     let entries = storedData[initialCellValue];
     let category = cell.getData().category;
     await setCategory({ [category]: entries });
+    await chrome.storage.local.remove([initialCellValue], (result) => {
+        debugger;
+        if (selectedCategory === category) {
+            $('categoryHeader').style.display = category;
+        }
+    });
 }
 
 function deleteCategory(category, row) {
@@ -370,9 +376,10 @@ for (const button of buttons) {
     };
 }
 
-wipeStorage();
-await setupDB();
+//wipeStorage();
+//await setupDB();
 getHistory();
 await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
 await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
 await getCategories();
+chrome.storage.local.get(function(result){console.log(result)});
