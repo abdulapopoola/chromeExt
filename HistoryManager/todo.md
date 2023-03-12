@@ -1,9 +1,10 @@
 Coding
-1. Figure out how to edit the cell contents and save it; on save update the category header too
-    1. Consider replacing the edit icon with a save icon when this is clicked;
-    1. After editing a cell; it should update the title if it is the selected one
-    1. Update the default CATEGORIES constant array or leave as is to allow for default settings to be reset?
-1. Delete website should remove it from history? Confirm and then delete
+1. Allow categorization of websites from dashboard? 
+    1. add column to the table
+    1. Choose icon
+    1. Link to the addWebSiteToCategory function
+1. Allow for bulk edits/categorization?
+1. Deleting a category should move all its entries over to the misc group or ask the user for next steps
 1. Consider drilling by clicking other cells (e.g. title and more) for a better UX? Or hiding/re-enabling the buttons on select?
 1. Delete website entry from category? Is this needed or should it be prevented?
 1. Allow users to define their own categories and provide a short list of seed categories
@@ -46,3 +47,9 @@ Miscellaneous
 6. extract out the time ranges for each
 7. Consider adopting classes instead of standalone functions
 1. App crashes when both wipeStorage() and await setupDB(); are commented out
+1. Allow custom time range from users
+1. Are the records for 24 hours accurate in the dashboard table?
+1. Figure out how to edit the cell contents and save it; on save update the category header too
+    1. Consider replacing the edit icon with a save icon when this is clicked;
+    1. After editing a cell; it should update the title if it is the selected one
+    1. Update the default CATEGORIES constant array or leave as is to allow for default settings to be reset?
