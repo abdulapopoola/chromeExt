@@ -1,8 +1,6 @@
 Coding
 1. Figure out how to edit the cell contents and save it; on save update the category header too
     1. Consider replacing the edit icon with a save icon when this is clicked;
-    1. consider reusing the addWebsiteHostToCategory method
-    1. Figure out why it doesn't write it
     1. After editing a cell; it should update the title if it is the selected one
     1. Update the default CATEGORIES constant array or leave as is to allow for default settings to be reset?
 1. Delete website should remove it from history? Confirm and then delete
