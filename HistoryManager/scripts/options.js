@@ -52,6 +52,9 @@ const editIcon = function (cell, formatterParams, onRendered) {
 const deleteIcon = function (cell, formatterParams, onRendered) {
     return "<i class='delete red icon'></i>";
 };
+const categorizeIcon = function(cell, formatterParams, onRendered) {
+    return "<i class='folder blue icon'></i>";
+}
 let selectedCategory = '';
 
 /*
@@ -180,6 +183,11 @@ function getHistory(startTime) {
                     },
                     { title: "Visit Count", field: "visitCount", sorter: "number", headerTooltip: "This is how often you have visited this domain" },
                     { title: "Times Typed", field: "typedCount", sorter: "number", headerTooltip: "This is how often you've visited this domain after typing its address" },
+                    {
+                        title: "Categorize",
+                        headerTooltip: "Categorize this host",
+                        formatter: categorizeIcon
+                    },
                 ],
                 initialSort: [
                     { column: "visitCount", dir: "desc" },
@@ -296,7 +304,7 @@ async function getCategories() {
 
 async function updateWebSiteCategory(cell) {
     let initialCellValue = cell.getInitialValue();
-    
+
     let storedData = await getData(initialCellValue);
     let entries = storedData[initialCellValue];
     let category = cell.getData().category;
@@ -381,4 +389,4 @@ getHistory();
 await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
 await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
 await getCategories();
-chrome.storage.local.get(function(result){console.log(result)});
+chrome.storage.local.get(function (result) { console.log(result) });
