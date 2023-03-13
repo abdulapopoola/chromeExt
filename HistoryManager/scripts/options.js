@@ -53,7 +53,7 @@ const deleteIcon = function (cell, formatterParams, onRendered) {
     return "<i class='delete red icon'></i>";
 };
 const categorizeIcon = function(cell, formatterParams, onRendered) {
-    return "<i class='folder blue icon'></i>";
+    return "<i class='folder outline blue icon'></i>";
 }
 let selectedCategory = '';
 
