@@ -52,7 +52,7 @@ const editIcon = function (cell, formatterParams, onRendered) {
 const deleteIcon = function (cell, formatterParams, onRendered) {
     return "<i class='delete red icon'></i>";
 };
-const categorizeIcon = function(cell, formatterParams, onRendered) {
+const categorizeIcon = function (cell, formatterParams, onRendered) {
     return "<i class='folder outline blue icon'></i>";
 }
 let selectedCategory = '';
@@ -186,8 +186,10 @@ function getHistory(startTime) {
                     {
                         title: "Categorize",
                         headerTooltip: "Categorize this host",
-                        formatter: categorizeIcon
-                    },
+                        formatter: categorizeIcon,
+                        editor: "list",
+                        editorParams: { values: { "male": "Male", "female": "Female", "unknown": "Unknown" } }
+                    }
                 ],
                 initialSort: [
                     { column: "visitCount", dir: "desc" },
