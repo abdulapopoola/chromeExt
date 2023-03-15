@@ -1,7 +1,5 @@
 Coding
 1. Allow categorization of websites from dashboard? 
-    1 Retrieve all the categories from storage - load editorParams via AJAX
-    2. Show as dropdown
     1. On select, show add button
     1. Link to the addWebSiteToCategory function
 1. Allow for bulk edits/categorization?

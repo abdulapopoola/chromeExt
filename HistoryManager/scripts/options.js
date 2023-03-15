@@ -188,7 +188,17 @@ function getHistory(startTime) {
                         headerTooltip: "Categorize this host",
                         formatter: categorizeIcon,
                         editor: "list",
-                        editorParams: { values: { "male": "Male", "female": "Female", "unknown": "Unknown" } }
+                        editorParams: {
+                            valuesLookup: async function (cell, filterTerm) {
+                                let data = await getData();
+                                let dropdownData = Object.keys(data).map(val => ({
+                                    label: val,
+                                    value: val
+                                })).filter(val => val.label !== 'CATEGORIES' );
+
+                                return dropdownData;
+                            }
+                        }
                     }
                 ],
                 initialSort: [
