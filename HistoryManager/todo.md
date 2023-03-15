@@ -1,6 +1,8 @@
 Coding
 1. Allow categorization of websites from dashboard? 
-    1. On select, show add button
+    1. On select, set it to the value in the UI
+    1. Add it on save to celledit funtion
+    1. show add button
     1. Link to the addWebSiteToCategory function
 1. Allow for bulk edits/categorization?
 1. Deleting a category should move all its entries over to the misc group or ask the user for next steps
