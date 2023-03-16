@@ -1,6 +1,5 @@
 Coding
 1. Allow categorization of websites from dashboard? 
-    1. On select, set it to the value in the UI
     1. Add it on save to celledit funtion
     1. show add button
     1. Link to the addWebSiteToCategory function

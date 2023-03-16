@@ -53,7 +53,11 @@ const deleteIcon = function (cell, formatterParams, onRendered) {
     return "<i class='delete red icon'></i>";
 };
 const categorizeIcon = function (cell, formatterParams, onRendered) {
-    return "<i class='folder outline blue icon'></i>";
+    if (!cell.getValue()) {
+        return "<i class='folder outline blue icon'></i>";
+    } else {
+        return cell.getValue();
+    }
 }
 let selectedCategory = '';
 
@@ -187,6 +191,11 @@ function getHistory(startTime) {
                         title: "Categorize",
                         headerTooltip: "Categorize this host",
                         formatter: categorizeIcon,
+                        cellEdited: async function (cell) {
+                            //let value = cell.getValue();
+                            //cell.setValue(value, true);
+                            // todo: fix this to update to cell category
+                        },
                         editor: "list",
                         editorParams: {
                             valuesLookup: async function (cell, filterTerm) {
@@ -194,7 +203,7 @@ function getHistory(startTime) {
                                 let dropdownData = Object.keys(data).map(val => ({
                                     label: val,
                                     value: val
-                                })).filter(val => val.label !== 'CATEGORIES' );
+                                })).filter(val => val.label !== 'CATEGORIES');
 
                                 return dropdownData;
                             }
