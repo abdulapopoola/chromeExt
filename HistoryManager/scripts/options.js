@@ -192,9 +192,10 @@ function getHistory(startTime) {
                         headerTooltip: "Categorize this host",
                         formatter: categorizeIcon,
                         cellEdited: async function (cell) {
-                            //let value = cell.getValue();
-                            //cell.setValue(value, true);
-                            // todo: fix this to update to cell category
+                            let category = cell.getValue();
+                            let host = 'https://' + cell.getRow().getCell('hostname').getValue();
+                            //todo: find a more robust way to do this
+                            await addWebsiteHostToCategory(host, category);
                         },
                         editor: "list",
                         editorParams: {
