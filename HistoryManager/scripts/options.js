@@ -77,6 +77,7 @@ function transformHistoryItems(historyItems) {
     for (let item of historyItems) {
         let url = new URL(item.url);
         let hostname = url.hostname;
+        let origin = url.origin;
         let entry = transformed[hostname];
         if (entry) {
             entry.frequency++;
@@ -86,6 +87,7 @@ function transformHistoryItems(historyItems) {
         } else {
             transformed[hostname] = {
                 hostname,
+                origin,
                 frequency: 1,
                 visitCount: item.visitCount,
                 typedCount: item.typedCount,
@@ -193,8 +195,7 @@ function getHistory(startTime) {
                         formatter: categorizeIcon,
                         cellEdited: async function (cell) {
                             let category = cell.getValue();
-                            let host = 'https://' + cell.getRow().getCell('hostname').getValue();
-                            //todo: find a more robust way to do this
+                            let host = cell.getRow().getData().origin;
                             await addWebsiteHostToCategory(host, category);
                         },
                         editor: "list",
@@ -405,10 +406,10 @@ for (const button of buttons) {
     };
 }
 
-wipeStorage();
-await setupDB();
+//wipeStorage();
+//await setupDB();
 getHistory();
-await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
-await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
+//await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
+//await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
 await getCategories();
 chrome.storage.local.get(function (result) { console.log(result) });
