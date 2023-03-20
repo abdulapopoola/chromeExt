@@ -59,7 +59,11 @@ const categorizeIcon = function (cell, formatterParams, onRendered) {
         return cell.getValue();
     }
 
-    // onRendered(); todo; figure out if thsi can be used to set the right value
+    // onRendered(); todo; figure out if this can be used to set the right value
+    // Get the cell category
+    // Make the load categories call
+    // See if cell has any data or value set
+    // If so, then return it; otherwise return icon
 }
 let selectedCategory = '';
 
@@ -199,7 +203,7 @@ function getHistory(startTime) {
                             let category = cell.getValue();
                             let host = cell.getRow().getData().origin;
                             await addWebsiteHostToCategory(host, category);
-                            await getCategories(); //Hack to ensure it is refreshed
+                            await getCategories(); //todo: remove, Hack to ensure it is refreshed
                         },
                         editor: "list",
                         editorParams: {
