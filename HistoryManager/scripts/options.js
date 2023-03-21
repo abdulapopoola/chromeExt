@@ -58,12 +58,6 @@ const categorizeIcon = function (cell, formatterParams, onRendered) {
     } else {
         return cell.getValue();
     }
-
-    // onRendered(); todo; figure out if this can be used to set the right value
-    // Get the cell category
-    // Make the load categories call
-    // See if cell has any data or value set
-    // If so, then return it; otherwise return icon
 }
 let selectedCategory = '';
 
@@ -170,6 +164,16 @@ function getHistory(startTime) {
             startTime: startTime,
             maxResults: MAX_RESULTS,
         }, function (data) {
+
+            // fetch categories data and pull out hosts
+            // pass to the transformHistoryData function so it can be stitched? 
+            // Rather take the dictionary and enhance it with the extra data actually to keep that function clean
+    // onRendered(); todo; figure out if this can be used to set the right value
+    // Get the cell category
+    // Make the load categories call
+    // See if cell has any data or value set
+    // If so, then return it; otherwise return icon
+
             let transformed = transformHistoryItems(data);
             let table = new Tabulator("#historyTable", {
                 placeholder: "No Data Available",
