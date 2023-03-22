@@ -157,30 +157,33 @@ function drill(data, historyItems) {
     });
 }
 
-function getHistory(startTime) {
+async function enhanceHistoryItems(historyItems) {
+    let categories = await getData();
+    for (let item of historyItems) {
+        for(const [key, value] of Object.entries(categories)) {
+            if(value.includes(item.hostname)) {
+                item.category = key;
+            }
+        }
+    }
+    return historyItems;
+}
+
+async function getHistory(startTime) {
     chrome.history.search(
         {
             text: '',
             startTime: startTime,
             maxResults: MAX_RESULTS,
-        }, function (data) {
-
-            // fetch categories data and pull out hosts
-            // pass to the transformHistoryData function so it can be stitched? 
-            // Rather take the dictionary and enhance it with the extra data actually to keep that function clean
-    // onRendered(); todo; figure out if this can be used to set the right value
-    // Get the cell category
-    // Make the load categories call
-    // See if cell has any data or value set
-    // If so, then return it; otherwise return icon
-
+        }, async function (data) {
             let transformed = transformHistoryItems(data);
+            let enhancedHistoryItems = await enhanceHistoryItems(transformed);
             let table = new Tabulator("#historyTable", {
                 placeholder: "No Data Available",
                 layout: "fitDataStretch",
                 responsiveLayout: "collapse",
                 selectable: 1,
-                data: transformed,
+                data: enhancedHistoryItems,
                 pagination: "local",
                 paginationSize: 10,
                 paginationSizeSelector: [10, 20, 50],
@@ -201,6 +204,7 @@ function getHistory(startTime) {
                     { title: "Times Typed", field: "typedCount", sorter: "number", headerTooltip: "This is how often you've visited this domain after typing its address" },
                     {
                         title: "Categorize",
+                        field: "category",
                         headerTooltip: "Categorize this host",
                         formatter: categorizeIcon,
                         cellEdited: async function (cell) {
@@ -419,7 +423,7 @@ for (const button of buttons) {
 
 //wipeStorage();
 //await setupDB();
-getHistory();
+await getHistory();
 //await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
 //await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
 await getCategories();
