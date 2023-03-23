@@ -1,7 +1,9 @@
 Coding
+1. Deleting a website in the category view should remove it    
 1. Trigger functions to load history and categories on load
 1. Ensure that dashboard loads categories appropriately
 1. Can a website have multiple categories?
+1. Allow removing a category from a website
 1. Allow for bulk edits/categorization?
 1. Deleting a category should move all its entries over to the misc group or ask the user for next steps
 1. Consider drilling by clicking other cells (e.g. title and more) for a better UX? Or hiding/re-enabling the buttons on select?
