@@ -12,6 +12,7 @@ Coding
 1. If there is no data; do not show the categories table 
 1. Allow for searching through categories?
 1. Add intelligent categorization of websites
+1. test push
 
 Productivity
 1. Calculate a productivity score based on categories
