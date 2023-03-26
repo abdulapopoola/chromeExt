@@ -267,6 +267,19 @@ async function addWebsiteHostToCategory(website, category) {
     await setCategory({ [category]: entries });
 }
 
+async function removeWebsiteFromCategory(website, category) {
+    // todo: test this out and integrate it with delete function and add refresh support
+    let url = new URL(website);
+    let hostname = url.hostname;
+
+    let categoryData = await getData(category);
+    let entries = categoryData[category];
+    let index = entries.findIndex(hostname);
+    entries = entries.splice(index, 1);
+    entries = [... new Set(entries)];
+    await setCategory({ [category]: entries });
+}
+
 async function getCategories() {
     let data = await getData();
 
@@ -396,6 +409,7 @@ function categoryDrill(e, cell) {
                 title: "Delete",
                 formatter: deleteIcon,
                 cellClick: function (e, cell) {
+                    // todo: call the deleteWebsiteFromCategory function
                     alert("Printing row data for: " + cell.getRow().getData())
                 }
             },
