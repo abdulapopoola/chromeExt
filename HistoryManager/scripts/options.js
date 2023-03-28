@@ -268,7 +268,6 @@ async function addWebsiteHostToCategory(website, category) {
 }
 
 async function removeWebsiteFromCategory(website, category) {
-    // todo: test this out and integrate it with delete function and add refresh support
     let url = new URL(website);
     let hostname = url.hostname;
 
@@ -408,8 +407,10 @@ function categoryDrill(e, cell) {
             {
                 title: "Delete",
                 formatter: deleteIcon,
-                cellClick: function (e, cell) {
+                cellClick: async function (e, cell) {
                     // todo: call the deleteWebsiteFromCategory function
+                    // get the category too
+                    // await removeWebsiteFromCategory(cell.getRow().getData().website, selectedCategory);
                     alert("Printing row data for: " + cell.getRow().getData())
                 }
             },
