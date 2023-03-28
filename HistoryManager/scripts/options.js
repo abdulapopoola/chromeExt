@@ -274,8 +274,8 @@ async function removeWebsiteFromCategory(website, category) {
 
     let categoryData = await getData(category);
     let entries = categoryData[category];
-    let index = entries.findIndex(hostname);
-    entries = entries.splice(index, 1);
+    let index = entries.findIndex(element => element === hostname);
+    entries.splice(index, 1);
     entries = [... new Set(entries)];
     await setCategory({ [category]: entries });
 }
@@ -438,7 +438,8 @@ for (const button of buttons) {
 //wipeStorage();
 //await setupDB();
 await getHistory();
-//await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
+await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
+//await removeWebsiteFromCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
 //await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
 await getCategories();
 chrome.storage.local.get(function (result) { console.log(result) });
