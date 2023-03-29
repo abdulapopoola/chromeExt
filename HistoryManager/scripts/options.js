@@ -410,7 +410,10 @@ function categoryDrill(e, cell) {
                 cellClick: async function (e, cell) {
                     // todo: call the deleteWebsiteFromCategory function
                     // get the category too
-                    // await removeWebsiteFromCategory(cell.getRow().getData().website, selectedCategory);
+                    // find the category and the website
+                    let website = cell.getRow().getData().website;
+                    console.log(website);
+                    //await removeWebsiteFromCategory(cell.getRow().getData().website, selectedCategory);
                     alert("Printing row data for: " + cell.getRow().getData())
                 }
             },
