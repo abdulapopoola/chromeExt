@@ -160,8 +160,8 @@ function drill(data, historyItems) {
 async function enhanceHistoryItems(historyItems) {
     let categories = await getData();
     for (let item of historyItems) {
-        for(const [key, value] of Object.entries(categories)) {
-            if(value.includes(item.hostname)) {
+        for (const [key, value] of Object.entries(categories)) {
+            if (value.includes(item.hostname)) {
                 item.category = key;
             }
         }
@@ -268,12 +268,9 @@ async function addWebsiteHostToCategory(website, category) {
 }
 
 async function removeWebsiteFromCategory(website, category) {
-    let url = new URL(website);
-    let hostname = url.hostname;
-
     let categoryData = await getData(category);
     let entries = categoryData[category];
-    let index = entries.findIndex(element => element === hostname);
+    let index = entries.findIndex(element => element === website);
     entries.splice(index, 1);
     entries = [... new Set(entries)];
     await setCategory({ [category]: entries });
@@ -381,7 +378,7 @@ function categoryDrill(e, cell) {
     let categoryData = cell.getData();
     $('categoryHeader').innerText = categoryData.category;
     $('categoryHeader').style.display = 'block';
-    selectedCategory = categoryData.category;
+    let selectedCategory = categoryData.category;
 
     var t = new Tabulator("#categoriesDrillTable", {
         placeholder: "No Data Available",
@@ -396,7 +393,8 @@ function categoryDrill(e, cell) {
         paginationCounter: "rows",
         columns: [
             {
-                title: "Website", field: "website",
+                title: "Website",
+                field: "website",
                 headerTooltip: true,
                 formatter: "link",
                 formatterParams: {
@@ -408,13 +406,11 @@ function categoryDrill(e, cell) {
                 title: "Delete",
                 formatter: deleteIcon,
                 cellClick: async function (e, cell) {
-                    // todo: call the deleteWebsiteFromCategory function
-                    // get the category too
-                    // find the category and the website
-                    let website = cell.getRow().getData().website;
-                    console.log(website);
-                    //await removeWebsiteFromCategory(cell.getRow().getData().website, selectedCategory);
-                    alert("Printing row data for: " + cell.getRow().getData())
+                    let row = cell.getRow();
+                    let website = row.getData().website;
+                    await removeWebsiteFromCategory(website, selectedCategory);
+                    await getCategories(); // todo: find a better way to do this
+                    row.delete();
                 }
             },
         ],
