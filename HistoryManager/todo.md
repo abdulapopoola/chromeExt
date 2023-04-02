@@ -1,5 +1,6 @@
 Coding
 1. Deleting a website in the category view should remove it    
+    1. Finetune this operation
 1. Trigger functions to load history and categories on load
 1. Ensure that dashboard loads categories appropriately
 1. Can a website have multiple categories?
