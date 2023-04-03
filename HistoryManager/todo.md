@@ -39,7 +39,6 @@ PopUp
 
 Miscellaneous
 0. Figure out how to extract tabulator config to constants file and import it
-1. Only use required files in fomantic dist to minimize payload size; does this even matter given that this is an extension?
 1. Periodically scan the history? Every hour maybe or every day?
 2. Process into sources and destinations
 3. Process time spent on each
