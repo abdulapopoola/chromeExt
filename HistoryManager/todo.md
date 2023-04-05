@@ -32,8 +32,6 @@ Styling
 Engineering Efficiency
 1. Find a better way to execute the categories code instead of loading it all at once at the beginning; lazy load
 
-Styling
-
 PopUp
 1. Style pop up to allow for options
 
