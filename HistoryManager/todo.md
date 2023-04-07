@@ -16,7 +16,8 @@ Coding
 
 Productivity
 1. Calculate a productivity score based on categories
-1. Add charts
+1. Add charts ( what libraries to use?)
+1. Introduce and set up Dependabot
 1. Allow adding a website to a category
 1. figure out how to extract time spent on each visit to a page
 1. Coalesce into a daily view for top pages?
