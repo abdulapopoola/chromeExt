@@ -286,7 +286,7 @@ async function getCategories() {
             websites: data[category].map(entry => ({ website: entry }))
         }));
 
-    let table = new Tabulator("#categoriesTable", {
+    new Tabulator("#categoriesTable", {
         placeholder: "No Data Available",
         layout: "fitDataStretch",
         selectable: 1,
