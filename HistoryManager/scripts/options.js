@@ -439,7 +439,7 @@ for (const button of buttons) {
 //await setupDB();
 await getHistory();
 await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
-//await removeWebsiteFromCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
-//await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
+await removeWebsiteFromCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
+await addWebsiteHostToCategory("https://www.bbc.com/news/world-us-canada-64684350", "News");
 await getCategories();
 chrome.storage.local.get(function (result) { console.log(result) });
