@@ -388,7 +388,7 @@ function categoryDrill(e, cell) {
         pagination: "local",
         paginationSize: 25,
         selectable: 1,
-        paginationSizeSelector: [10, 25, 50],
+        paginationSizeSelector: [10, 30, 50],
         movableColumns: true,
         paginationCounter: "rows",
         columns: [
