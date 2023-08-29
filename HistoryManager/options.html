@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <div class="ui teal inverted main menu topBanner">
+    <div class="ui black inverted main menu topBanner">
         <div class="ui container">
             <div class="item">
                 History Manager
@@ -33,21 +33,21 @@
     <div class="pusher">
         <div class="full height">
             <div class="leftPane">
-                <div class="ui vertical inverted menu">
-                    <div class="item">
-                        <b>History Manager</b>
-                        <i class="clock icon"></i>
-                    </div>
+                <div class="item">
+                    <b>History Manager</b>
+                    <i class="clock icon"></i>
+                </div>
+                <div class="menu">
                     <a class="item" href="#dashboard">
                         <b>Dashboard</b>
                         <i class="solar panel icon"></i>
                     </a>
                     <a class="item" href="#categories">
-                        Categories
+                        <b>Categories</b>
                         <i class="layer group icon"></i>
                     </a>
                     <a class="item" href="#settings">
-                        Settings
+                        <b>Settings</b>
                         <i class="settings icon"></i>
                     </a>
                 </div>
@@ -101,6 +101,32 @@
                 <div class="ui segment" id="categories">
                     <div class="ui container fill">
                         <h1 class="ui header">Categories</h1>
+                        <div class="sub header" id="buttons">
+                            <div class="ui teal animated fade button" tabindex="0">
+                                <div class="visible content" role="button">Education</div>
+                                <div class="hidden content">
+                                    <i class="book icon"></i>
+                                </div>
+                            </div>
+                            <div class="ui teal animated fade button"  tabindex="0">
+                                <div class="visible content" role="button">IT</div>
+                                <div class="hidden content">
+                                    <i class="globe icon"></i>
+                                </div>
+                            </div>
+                            <div class="ui teal animated fade button"  tabindex="0">
+                                <div class="visible content" role="button" >Business</div>
+                                <div class="hidden content">
+                                    <i class="currency icon"></i>
+                                </div>
+                            </div>
+                            <div class="ui teal animated fade button"  tabindex="0">
+                                <div class="visible content" role="button" >Sports</div>
+                                <div class="hidden content">
+                                    <i class="futbol icon"></i>
+                                </div>
+                            </div>
+                        </div>
                         <div class="ui hidden divider"></div>
                         <div id="categoriesTable"></div>
                         <h3 class="ui dividing header" id="categoryHeader"></h3>
@@ -110,6 +136,32 @@
                 <div class="ui segment" id="settings">
                     <div class="ui container fill">
                         <h1 class="ui header">Settings</h1>
+                        <div class="sub header" id="buttons">
+                            <div class="ui teal animated fade button"  tabindex="0">
+                                <div class="visible content" role="button">Account</div>
+                                <div class="hidden content">
+                                    <i class="user icon"></i>
+                                </div>
+                            </div>
+                            <div class="ui teal animated fade button" tabindex="0">
+                                <div class="visible content" role="button">User Name</div>
+                                <div class="hidden content">
+                                    <i class="user icon"></i>
+                                </div>
+                            </div>
+                            <div class="ui teal animated fade button" tabindex="0">
+                                <div class="visible content" role="button">Password</div>
+                                <div class="hidden content">
+                                    <i class="key icon"></i>
+                                </div>
+                            </div>
+                            <div class="ui teal animated fade button" tabindex="0">
+                                <div class="visible content" role="button">Reset</div>
+                                <div class="hidden content">
+                                    <i class="settings icon"></i>
+                                </div>
+                            </div>
+                        </div>
                         <div class="ui hidden divider"></div>
                     </div>
                 </div>
